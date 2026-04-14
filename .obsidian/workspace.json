@@ -117,23 +117,37 @@
               "icon": "lucide-archive",
               "title": "すべてのプロパティ"
             }
+          },
+          {
+            "id": "4c458612fabb72cb",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "04_Journals/2026-04-14.md"
+              },
+              "icon": "lucide-info",
+              "title": "2026-04-14のファイルプロパティ"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
+      "templater-obsidian:Templater": false,
+      "obsidian-git:Open Git source control": false,
       "switcher:クイックスイッチャーを開く": false,
       "daily-notes:今日のデイリーノートを開く": false,
       "templates:テンプレートを挿入": false,
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "a2970d06648c03c9",
+  "active": "4c458612fabb72cb",
   "lastOpenFiles": [
     "05_Outputs/Mail Magazine/Mail - 1通目 学んでるのに動けない人へ.md",
     "マニュアル - AIにあなたの文体を覚えさせる.md",
