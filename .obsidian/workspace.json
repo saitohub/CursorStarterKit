@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-04-14.md",
+                "file": "04_Journals/2026-04-15.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-14"
+              "title": "2026-04-15"
             }
           }
         ]
@@ -124,10 +124,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "04_Journals/2026-04-14.md"
+                "file": "04_Journals/2026-04-15.md"
               },
               "icon": "lucide-info",
-              "title": "2026-04-14のファイルプロパティ"
+              "title": "2026-04-15のファイルプロパティ"
             }
           }
         ],
@@ -147,10 +147,10 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "e99a6ece7571e9be",
+  "active": "a2970d06648c03c9",
   "lastOpenFiles": [
-    "04_Journals/2026-04-15.md",
     "04_Journals/2026-04-14.md",
+    "04_Journals/2026-04-15.md",
     "05_Outputs/Mail Magazine/Mail - 1通目 学んでるのに動けない人へ.md",
     "マニュアル - AIにあなたの文体を覚えさせる.md",
     "はじめにお読みください.md",
