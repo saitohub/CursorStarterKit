@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "07_Swipe/Email/ここにメルマガの参考事例を入れてください.md",
+                "file": "04_Journals/2026-04-16.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "ここにメルマガの参考事例を入れてください"
+              "title": "2026-04-16"
             }
           }
         ]
@@ -124,10 +124,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "07_Swipe/Email/ここにメルマガの参考事例を入れてください.md"
+                "file": "04_Journals/2026-04-16.md"
               },
               "icon": "lucide-info",
-              "title": "ここにメルマガの参考事例を入れてくださいのファイルプロパティ"
+              "title": "2026-04-16のファイルプロパティ"
             }
           }
         ],
@@ -147,8 +147,10 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "e99a6ece7571e9be",
+  "active": "a2970d06648c03c9",
   "lastOpenFiles": [
+    "07_Swipe/Email/ここにメルマガの参考事例を入れてください.md",
+    "04_Journals/2026-04-16.md",
     "07_Swipe/Email/Swipe - やろうと思ってもできない自分を23年間責め続けた話（原文）.md",
     "04_Journals/2026-04-15.md",
     "07_Swipe/Email/Swipe - 後回し癖ロング文の良い要素抽出.md",
