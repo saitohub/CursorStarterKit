@@ -172,3 +172,4 @@ updated: {{TODAY}}
 
 - [[Course - {{product_name}} 企画書]]
 - [[promotion-config]]
+- `.cursor/rules/product-launch-guide.mdc`

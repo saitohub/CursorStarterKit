@@ -2,11 +2,6 @@
 
 promotion-config.md を読み込み、配信メール・LINE・特典のスケルトンファイルを一括生成するコマンド。
 
-> **これは「見本」です**  
-> このコマンドは、ポンポンが「分身AIラボ」のローンチ準備で実際に76ファイルを手作業で作った経験から、差分分析と壁打ちを重ねて自作したコマンドです。  
-> あなたがそのまま使えるよう置いてありますが、本質は「自分のビジネスに合わせたコマンドを、自分で育てられる」ことの実例として置いてあります。  
-> 運用の中で「これ毎回やってるな」という作業が見えてきたら、同じ要領で自分専用コマンドを作れるようになります。それが分身AIラボのゴール地点です。
-
 ## なぜこのコマンドが必要か
 
 分身AIラボでは17通のメール+LINE+特典で76ファイルを手作業で作った。URLを9ファイルで手動置換し、日付ズレを7ファイルで手動修正した。このコマンドで構造的にゼロにする。
@@ -170,7 +165,7 @@ promotion-dashboard.md
 
 1. promotion-dashboard.md を開いて全体を確認
 2. 各配信ファイルのテンプレートガイド（灰色のブロック）を読む
-3. Cursorの壁打ちで各ファイルを執筆（`03_Knowledge/` や `07_Swipe/` を参照させながら）
+3. mailmagazine-creator / content-creator スキルで各ファイルを執筆
 4. 執筆完了したらダッシュボードのチェックを更新
 
 推奨の執筆順:
@@ -238,4 +233,5 @@ config の `schedule` 配列にエントリを追加・削除するだけ。scaf
 
 - `.cursor/templates/promotion/` - 全テンプレート格納先
 - `.cursor/templates/promotion/promotion-config.md` - config テンプレート
+- `.cursor/rules/product-launch-guide.mdc` - ローンチ設計ガイド
 - `.cursor/commands/product-create.md` - 商品企画マスターコマンド（Phase 7 から接続）

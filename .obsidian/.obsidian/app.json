@@ -1,0 +1,14 @@
+{
+  "legacyEditor": false,
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "01_Notes",
+  "attachmentFolderPath": "02_Configs/Extra",
+  "alwaysUpdateLinks": true,
+  "promptDelete": false,
+  "showInlineTitle": false,
+  "readableLineLength": false,
+  "tabSize": 2,
+  "trashOption": "local"
+}
