@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-04-22.md",
+                "file": "04_Journals/2026-04-23.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-22"
+              "title": "2026-04-23"
             }
           }
         ]
@@ -124,10 +124,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "04_Journals/2026-04-22.md"
+                "file": "04_Journals/2026-04-23.md"
               },
               "icon": "lucide-info",
-              "title": "2026-04-22のファイルプロパティ"
+              "title": "2026-04-23のファイルプロパティ"
             }
           }
         ],
@@ -149,18 +149,21 @@
   },
   "active": "a2970d06648c03c9",
   "lastOpenFiles": [
+    "04_Journals/2026-04-22.md",
+    "04_Journals/2026-04-23.md",
     "01_Notes/AI分身ラボ/第1講/第2回 - 振り返り - やる一行.md",
     "01_Notes/AI分身ラボ/第1講/第1講 - 講座の全体像.md",
     "01_Notes/AI分身ラボ/第1講",
-    "01_Notes/AI分身ラボ/第1講/第2回 - 振り返り - やる一行.md",
-    "01_Notes/AI分身ラボ/第1講/第1講 - 講座の全体像.md",
-    "01_Notes/AI分身ラボ/第1講",
+    "01_Notes/AI分身ラボ/第1項/第2回 - 振り返り - やる一行.md",
+    "01_Notes/AI分身ラボ/第1項/第1項 - 講座の全体像.md",
+    "01_Notes/AI分身ラボ/第1項",
+    "01_Notes/AI分身ラボ/第2回 - 振り返り - やる一行.md",
     "01_Notes/習慣 - 走る前1行（的と行動）.md",
+    "01_Notes/AI分身ラボ/第1項 - 講座の全体像.md",
     "01_Notes/AI分身ラボ/MOC - AI分身ラボ.md",
     "01_Notes/AI分身ラボ",
     "07_Swipe/Copy/Swipe - セールス特典動画 5マインド（要約と指針）.md",
     "04_Journals/2026-04-18.md",
-    "04_Journals/2026-04-22.md",
     "04_Journals/2026-04-19-weekly.md",
     "04_Journals/2026-04-15.md",
     "04_Journals/2026-04-19.md",
@@ -174,7 +177,6 @@
     "マニュアル - AIにあなたの文体を覚えさせる.md",
     "はじめにお読みください.md",
     "02_Configs/Templates/Template - Evidence.md",
-    "02_Configs/Templates/Template - Daily Journal.md",
-    "01_Notes/ショートカットキー（Mac）.md"
+    "02_Configs/Templates/Template - Daily Journal.md"
   ]
 }
