@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-04-26.md",
+                "file": "04_Journals/2026-04-28.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-26"
+              "title": "2026-04-28"
             }
           }
         ]
@@ -124,10 +124,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "04_Journals/2026-04-26.md"
+                "file": "04_Journals/2026-04-28.md"
               },
               "icon": "lucide-info",
-              "title": "2026-04-26のファイルプロパティ"
+              "title": "2026-04-28のファイルプロパティ"
             }
           }
         ],
@@ -149,11 +149,13 @@
   },
   "active": "a2970d06648c03c9",
   "lastOpenFiles": [
+    "04_Journals/2026-04-26.md",
+    "04_Journals/2026-04-28.md",
+    "01_Notes/実行ルール - 朝の2分リセット.md",
     "03_Knowledge/Logic/Logic - 畑をまたぐ時の成功条件は転用可能な訓練資産.md",
     "03_Knowledge/Logic/Logic - 人の能力差より積み上げ回数差が結果を分ける.md",
     "01_Notes/AI分身ラボ/第1項 - 講座の全体像.md",
     "04_Journals/2026-04-23.md",
-    "04_Journals/2026-04-26.md",
     "04_Journals/2026-04-22.md",
     "01_Notes/AI分身ラボ/第1講/第2回 - 振り返り - やる一行.md",
     "01_Notes/AI分身ラボ/第1講/第1講 - 講座の全体像.md",
@@ -175,8 +177,6 @@
     "07_Swipe/Email/ここにメルマガの参考事例を入れてください.md",
     "07_Swipe/Email/Swipe - やろうと思ってもできない自分を23年間責め続けた話（原文）.md",
     "07_Swipe/Email/Swipe - 後回し癖ロング文の良い要素抽出.md",
-    "04_Journals/2026-04-14.md",
-    "05_Outputs/Mail Magazine/Mail - 1通目 学んでるのに動けない人へ.md",
-    "マニュアル - AIにあなたの文体を覚えさせる.md"
+    "04_Journals/2026-04-14.md"
   ]
 }
