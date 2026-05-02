@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-04-22.md",
+                "file": "04_Journals/Template - Daily Journal.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-22"
+              "title": "Template - Daily Journal"
             }
           }
         ]
@@ -124,10 +124,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "04_Journals/2026-04-22.md"
+                "file": "04_Journals/Template - Daily Journal.md"
               },
               "icon": "lucide-info",
-              "title": "2026-04-22のファイルプロパティ"
+              "title": "Template - Daily Journalのファイルプロパティ"
             }
           }
         ],
@@ -149,21 +149,22 @@
   },
   "active": "a2970d06648c03c9",
   "lastOpenFiles": [
-    "04_Journals/2026-04-21.md",
-    "04_Journals/2026-04-19-weekly.md",
-    "04_Journals/2026-04-20.md",
-    "04_Journals/2026-04-17.md",
-    "04_Journals/2026-04-26.md",
+    "04_Journals/2026-05-01.md",
     "04_Journals/2026-04-30.md",
     "04_Journals/2026-04-29.md",
     "04_Journals/2026-04-27.md",
+    "04_Journals/2026-04-26.md",
+    "04_Journals/2026-04-24.md",
+    "04_Journals/2026-04-19-weekly.md",
+    "04_Journals/2026-04-22.md",
+    "04_Journals/2026-04-21.md",
+    "04_Journals/2026-04-20.md",
+    "04_Journals/2026-04-17.md",
     "04_Journals/2026-04-28.md",
-    "04_Journals/2026-05-01.md",
     "03_Knowledge/Story/Story - 父の畑と手伝えばという感情.md",
     "03_Knowledge/Claim/Claim - 外に出す前に内側と手順を整える.md",
     "03_Knowledge/Logic/Logic - 行動が止まるのは設計と入力単位の問題.md",
     "06_Reflections/Monthly/Reflection - 2026-04.md",
-    "04_Journals/2026-04-24.md",
     "04_Journals/2026-04-25.md",
     "07_Swipe/SNS/Swipe - AI臭を消すプロンプト8選と経験を担ぐ視点.md",
     "04_Journals/Template - Daily Journal.md",
@@ -172,7 +173,6 @@
     "03_Knowledge/Logic/Logic - 人の能力差より積み上げ回数差が結果を分ける.md",
     "01_Notes/AI分身ラボ/第1項 - 講座の全体像.md",
     "04_Journals/2026-04-23.md",
-    "04_Journals/2026-04-22.md",
     "01_Notes/AI分身ラボ/第1講/第2回 - 振り返り - やる一行.md",
     "01_Notes/AI分身ラボ/第1講/第1講 - 講座の全体像.md",
     "01_Notes/AI分身ラボ/第1講",
