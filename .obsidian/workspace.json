@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-04-27.md",
+                "file": "04_Journals/2026-05-05.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-27"
+              "title": "2026-05-05"
             }
           }
         ]
@@ -124,10 +124,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "04_Journals/2026-04-27.md"
+                "file": "04_Journals/2026-05-05.md"
               },
               "icon": "lucide-info",
-              "title": "2026-04-27のファイルプロパティ"
+              "title": "2026-05-05のファイルプロパティ"
             }
           }
         ],
@@ -149,9 +149,11 @@
   },
   "active": "a2970d06648c03c9",
   "lastOpenFiles": [
+    "04_Journals/2026-05-03.md",
+    "04_Journals/2026-05-05.md",
+    "04_Journals/2026-04-27.md",
     "04_Journals/2026-04-24.md",
     "04_Journals/2026-04-26.md",
-    "04_Journals/2026-05-03.md",
     "04_Journals/Template - Daily Journal.md",
     "04_Journals/2026-05-02.md",
     "07_Swipe/Copy/Swipe - ドラゴン先生 ミッション発見ワーク.md",
@@ -159,7 +161,6 @@
     "04_Journals/2026-05-01.md",
     "04_Journals/2026-04-30.md",
     "04_Journals/2026-04-29.md",
-    "04_Journals/2026-04-27.md",
     "04_Journals/2026-04-19-weekly.md",
     "04_Journals/2026-04-22.md",
     "04_Journals/2026-04-21.md",
@@ -174,7 +175,6 @@
     "07_Swipe/SNS/Swipe - AI臭を消すプロンプト8選と経験を担ぐ視点.md",
     "01_Notes/実行ルール - 朝の2分リセット.md",
     "03_Knowledge/Logic/Logic - 畑をまたぐ時の成功条件は転用可能な訓練資産.md",
-    "03_Knowledge/Logic/Logic - 人の能力差より積み上げ回数差が結果を分ける.md",
     "01_Notes/AI分身ラボ/第1講",
     "01_Notes/AI分身ラボ/第1項",
     "01_Notes/AI分身ラボ"
