@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-05-10.md",
+                "file": "05_Outputs/Mail Magazine/Mail - 1通目 学んでるのに動けない人へ.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-05-10"
+              "title": "Mail - 1通目 学んでるのに動けない人へ"
             }
           }
         ]
@@ -148,10 +148,11 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "a2970d06648c03c9",
+  "active": "e99a6ece7571e9be",
   "lastOpenFiles": [
-    "04_Journals/2026-05-01.md",
+    "03_Knowledge/Logic/Logic - 高密度学習の摂取上限と目標の三分の一係数.md",
     "04_Journals/2026-05-10.md",
+    "04_Journals/2026-05-01.md",
     "04_Journals/2026-05-09.md",
     "04_Journals/2026-04-28.md",
     "04_Journals/2026-04-27.md",
@@ -176,7 +177,6 @@
     "07_Swipe/Copy/Swipe - ドラゴン先生 ミッション発見ワーク.md",
     "03_Knowledge/Logic/Logic - TTM理論とは.md",
     "04_Journals/2026-04-30.md",
-    "04_Journals/2026-04-19-weekly.md",
     "01_Notes/AI分身ラボ/第1講",
     "01_Notes/AI分身ラボ/第1項",
     "01_Notes/AI分身ラボ"
