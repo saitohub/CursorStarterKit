@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-05-12.md",
+                "file": "はじめにお読みください.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-05-12"
+              "title": "はじめにお読みください"
             }
           }
         ]
@@ -150,8 +150,8 @@
   },
   "active": "a2970d06648c03c9",
   "lastOpenFiles": [
-    "はじめにお読みください.md",
     "04_Journals/2026-05-12.md",
+    "はじめにお読みください.md",
     "04_Journals/2026-05-11.md",
     "05_Outputs/note-プロフィール-サイジム.md",
     "01_Notes/イチラボ/イチラボ・対話ログ - 2026-05-10（読書・保存・表記）.md",
