@@ -5,31 +5,66 @@
 >
 > **バックアップの全体方針**（3-2-1、クラウドドライブとの併用など）は [データバックアップ](マニュアル%20-%20データバックアップ.md) を参照してください。
 
-**所要時間：20〜30分（初回のみ）**  
+**所要時間：20〜40分（初回のみ）**  
 **難易度：★☆☆☆☆（エンジニア知識は一切不要）**
+
+---
+
+## 重要な前提
+
+**10分ごとの自動バックアップは、原則として「PCが起動しており、Obsidian が動いている間」に実行されます。** 電源オフ、スリープ中、Obsidian を完全終了している間は、スケジュールされた同期は進みません。PCを閉じる前や別PCへ移る前は、手動で **Commit and push**（後述）を一度実行しておくと安全です。
 
 ---
 
 ## そもそも何をするのか
 
-Obsidian の「Git」というプラグインが、10分おきに「このフォルダの変更を記録 → GitHubに送信」を自動でやってくれます。
+Obsidian の **Git** プラグイン（開発者名：Vinzent／旧称 Obsidian Git）が、設定した間隔で「このフォルダの変更を記録 → GitHub に送信」を自動で行います。
 
 ```
-あなたのPC → （10分ごとに自動送信）→ GitHub（クラウド）
+あなたのPC（Vault） → Git（履歴） → GitHub Private リポジトリ（クラウド）
 ```
 
-一度設定してしまえば、あとは何もしなくていいです。
+| 項目 | 本手順での推奨 | 理由 |
+| --- | --- | --- |
+| GitHub の公開範囲 | **Private** | 個人メモ・業務メモ・添付が含まれる可能性があるため |
+| 認証 | **HTTPS**（Git Credential Manager / macOS Keychain など） | 初心者向けの案内が多く、Obsidian Git の認証ドキュメントとも整合しやすい |
+| 自動化 | **プラグインの定期 commit / push（または commit-and-sync）** | 追加サーバーや常駐スクリプトなしで運用しやすい |
+
+一度設定してしまえば、あとは Obsidian を開いて作業するだけでバックアップが回ります。
+
+---
+
+## 事前準備チェック
+
+| 確認項目 | Windows | macOS | 確認方法・備考 |
+| --- | --- | --- | --- |
+| GitHub アカウント | 必要 | 必要 | [github.com](https://github.com/) にサインインできること |
+| Obsidian | 必要 | 必要 | バックアップしたい Vault を開けること |
+| Git | 必要 | 必要 | ターミナル / Git Bash で `git --version` と打ち、バージョンが表示されること |
+| Vault の保存場所 | 確認推奨 | 確認推奨 | OneDrive / iCloud Drive / Dropbox 直下だと **Git と二重同期** で競合しやすい。可能なら通常フォルダに置くか、同期ルールを決める |
+| GitHub に載せたくない情報 | 確認必須 | 確認必須 | パスワード、API キー、個人番号、顧客秘密などをノートに入れていないか。入れる場合は `.gitignore` や Vault 外管理を検討 |
 
 ---
 
 ## 準備するもの
 
-- [ ] GitHubのアカウント（持っていない場合は最初に作る）
+- [ ] GitHub のアカウント（なければ先に作成）
 - [ ] インターネット接続
 
 ---
 
-## STEP 1：GitHubアカウントを作る（すでにある人はスキップ）
+## 用語メモ（1分で読む）
+
+| 用語 | 意味 |
+| --- | --- |
+| **commit** | 変更をローカルの履歴として記録する |
+| **push** | ローカルの履歴を GitHub へ送る |
+| **pull** | GitHub 側の変更をローカルへ取り込む |
+| **commit-and-sync** | プラグイン上で、コミットと送受信をまとめて行う操作（表示名はバージョンで異なる場合あり） |
+
+---
+
+## STEP 1：GitHub アカウントを作る（すでにある人はスキップ）
 
 1. [https://github.com](https://github.com) にアクセス
 2. 「Sign up」をクリック
@@ -42,221 +77,323 @@ Obsidian の「Git」というプラグインが、10分おきに「このフォ
 
 ## STEP 2：Git をインストールする
 
-Gitは「変更履歴を記録するソフト」です。無料です。
+Git は「変更履歴を記録するソフト」です。無料です。
 
-### Macの場合
+### Mac の場合
 
-ターミナルを開いて（Spotlight検索で「ターミナル」と入力）、以下を貼り付けてEnter：
+1. ターミナルを開き（Spotlight で「ターミナル」）、次を実行：
+
+```
+git --version
+```
+
+バージョンが表示されれば **すでに導入済み**です。次の STEP に進んでください。
+
+2. `command line developer tools` のインストールを求められた場合、または `git` が無いと言われた場合：
 
 ```
 xcode-select --install
 ```
 
-「インストール」ボタンが出たらクリック。完了まで数分待ちます。
+「インストール」をクリックし、完了まで待ちます。
 
-> すでにインストール済みの場合は「already installed」と表示されます。そのまま次に進んでOKです。
+> Homebrew を使っている場合は [Git 公式：macOS](https://git-scm.com/install/mac) の手順に沿って `brew install git` でも構いません。
 
-### Windowsの場合
+### Windows の場合
 
-1. [https://git-scm.com/download/win](https://git-scm.com/download/win) にアクセス
-2. 「Click here to download」をクリック
-3. ダウンロードされたインストーラーを実行
-4. 途中の選択肢はすべてデフォルト（そのまま「Next」を押し続ける）でOK
-5. 「Finish」で完了
+1. [Git for Windows](https://git-scm.com/install/windows) から **x64 Setup**（ARM 版 Windows のみ ARM64）をダウンロード
+2. インストーラーを実行し、基本は **既定のまま** Next（**Git Credential Manager** が有効な構成になっていることが多いです）
+3. スタートメニューから **Git Bash** を開き、確認：
 
-インストール後、スタートメニューに「Git Bash」が追加されます。これ以降「ターミナル」と書いてある手順は、Windowsの場合はこの「Git Bash」を使ってください。
+```
+git --version
+```
+
+これ以降「ターミナル」と書いてある手順は、Windows では **Git Bash** を使ってください。
 
 ---
 
 ## STEP 3：GitHub CLI をインストールする
 
-GitHub CLI は「ターミナルからGitHubを操作するツール」です。
+GitHub CLI（`gh`）は「ターミナルから GitHub を操作するツール」です。このマニュアルの **おすすめルート**では、リポジトリ作成と初回 push をまとめて行います。
 
-### Macの場合
+### Mac の場合
 
-ターミナルで以下を実行：
+ターミナルで：
 
 ```
 brew install gh
 ```
 
-> Homebrewが入っていない場合は先に [https://brew.sh](https://brew.sh) からインストールしてください（ページの指示に従うだけ）。
+> Homebrew が無い場合は [https://brew.sh](https://brew.sh) からインストールしてください。
 
-### Windowsの場合
+### Windows の場合
 
-1. [https://cli.github.com](https://cli.github.com) にアクセス
-2. 「Download for Windows」をクリック
-3. ダウンロードされたインストーラーを実行
-4. デフォルト設定のまま「Next」→「Install」→「Finish」
+1. [https://cli.github.com](https://cli.github.com) → Download for Windows
+2. インストーラーを既定のまま完了
 
 ---
 
-## STEP 4：GitHubにログインする
+## STEP 4：GitHub にログインする
 
-**Mac・Windows共通（Git BashまたはターミナルでOK）**
-
-以下を実行：
+**Mac・Windows共通（Git Bash またはターミナル）**
 
 ```
 gh auth login
 ```
 
-いくつか質問されます：
-
 | 質問 | 選ぶもの |
-|-----|---------|
+| --- | --- |
 | Where do you use GitHub? | `GitHub.com` |
 | What is your preferred protocol for Git operations? | `HTTPS` |
-| Authenticate Git with your GitHub credentials? | `Y` を押してEnter |
+| Authenticate Git with your GitHub credentials? | `Y` |
 | How would you like to authenticate GitHub CLI? | `Login with a web browser` |
 
-「Login with a web browser」を選ぶと：
-1. ターミナルに8桁のコード（例：`XXXX-XXXX`）が表示される
-2. ブラウザが開く
-3. コードを入力してGitHubにログイン
-4. 「Authorize」をクリック
-
-ターミナルに「Logged in as （ユーザー名）」と表示されたら成功です。
+ブラウザでコード認証し、「Authorize」まで完了すると、`Logged in as （ユーザー名）` のように表示されます。
 
 ---
 
-## STEP 5：GitHubにプライベートリポジトリを作る
+## GitHub の HTTPS 認証（Obsidian から Push するときも使う）
 
-「リポジトリ」＝「GitHubのクラウド上のフォルダ」のことです。
+GitHub の HTTPS では、**アカウントのログインパスワードをそのまま Git のパスワードとして使えません**（必要なら **Personal Access Token** をパスワードの代わりに使います）。トークンはパスワード同様に扱い、**手順書やノートに貼らない**でください。公式：[Managing personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 
-ターミナルで以下を実行（このフォルダのパスを指定します）：
+| OS | 推奨 | 確認・設定の例 |
+| --- | --- | --- |
+| Windows | Git Credential Manager | `git config --global credential.helper` で `manager` または `manager-core` が出ることが多い。未設定なら次を試す：`git config --global credential.helper manager-core`（効かない場合は `manager`） |
+| macOS | Keychain | `git config --global credential.helper osxkeychain` |
 
-**Macの場合：**
+Obsidian Git の認証の詳細は [Obsidian Git Documentation: Authentication](https://publish.obsidian.md/git-doc/Authentication) を参照してください。
+
+---
+
+## STEP 5：GitHub にプライベートリポジトリを作る（おすすめ：`gh` で一発）
+
+「リポジトリ」＝ GitHub 上のこの Vault 用フォルダです。
+
+ターミナルで、この **スターターキット（Vault）のフォルダ** に移動してから実行します。
+
+**Mac：**
 
 ```
 cd "このフォルダをここにドラッグ&ドロップ"
 ```
 
-> ターミナルに `cd ` と入力した後（スペースあり）、Finderからこのフォルダ（スターターキット）をターミナルにドラッグすると自動でパスが入ります。Enterを押してください。
+> `cd ` の後ろにスペースを入れ、Finder からフォルダをターミナルへドラッグするとパスが入ります。
 
-**Windowsの場合：**
+**Windows：**
 
-エクスプローラーでこのフォルダを開き、アドレスバーに `git bash` と入力してEnterを押すと、そのフォルダを開いた状態でGit Bashが起動します。
+エクスプローラーでこのフォルダを開き、アドレスバーに `git bash` と入力して Enter → そのフォルダで Git Bash が開きます。
 
----
-
-フォルダに移動できたら、以下を実行：
+**移動できたら実行：**
 
 ```
 gh repo create obsidian-vault --private --source=. --push
 ```
 
-これで：
-- `obsidian-vault` という名前のプライベートリポジトリがGitHub上に作成される
-- 現在のデータが全部GitHubに送られる
+- `obsidian-vault` はリポジトリ名（好きな名前に変更可）
+- 現在のデータが GitHub に送られます
 
-完了すると「✓ Created repository（ユーザー名）/obsidian-vault on GitHub」と表示されます。
-
-> **「Name already exists」と表示された場合：**  
-> すでに同じ名前のリポジトリがある場合です。以下のように別の名前で作ってください：  
+> **「Name already exists」** のときは名前を変える：  
 > `gh repo create obsidian-vault-2 --private --source=. --push`
+
+### STEP 5-B（任意）：`gh` を使わず Web で空の Private リポジトリだけ作る場合
+
+既存 Vault を後から紐づけるときは、**README / .gitignore / License を付けずに**空の Private リポジトリを作るとトラブルが少ないです（付けると初回 push で履歴が分岐することがあります）。手順は [GitHub Docs: Creating a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) を参照。
+
+作成後は、STEP 6 のプラグイン導入後に **Initialize a new repo**（未初期化の場合）→ **リモート origin に HTTPS URL を登録** → **初回 Commit / Push** の順で接続します。詳細は [Obsidian Git: Getting Started](https://publish.obsidian.md/git-doc/Getting+Started) を参照してください。
 
 ---
 
 ## STEP 6：Git プラグインをインストールする
 
-Obsidianを開いてください。
+Obsidian を開いてください。
 
-1. 左下の「設定（歯車アイコン）」をクリック
-2. 左メニューの「コミュニティプラグイン」をクリック
-3. 「コミュニティプラグインを有効化」が出たら「有効化」をクリック
-4. 「閲覧」ボタンをクリック
-5. 検索欄に「Git」と入力
-6. 「Git」（作者名：Vinzent）が表示されたら「インストール」→「有効化」
+> **すでに STEP 5 で `gh repo create ... --push` まで完了している場合**、Vault 内には `.git` がありリモートも登録済みです。**Git: Initialize a new repo は実行しない**でください（エラーになることがあります）。プラグインのインストールと有効化、STEP 7 の自動バックアップ設定に進めば問題ありません。
 
-> 以前は「Obsidian Git」という名前でしたが、現在はシンプルに「Git」という名前に変更されています。検索結果の中から作者名が「Vinzent」になっているものを選んでください。
+1. 左下の「設定（歯車アイコン）」
+2. 「コミュニティプラグイン」→ 必要なら制限モードを解除
+3. 「閲覧」→ 検索欄に `Git` または `Obsidian Git`
+4. **Git**（作者：**Vinzent**）を「インストール」→「有効化」
+
+> 検索結果は作者名 **Vinzent** で選ぶと安全です。
+
+コマンドパレット（`Ctrl+P` / `Cmd+P`）で `Git:` と入力し、**Initialize a new repo** や **Commit-and-sync** が出れば有効化できています。
+
+### 著者情報（初回のみ・未設定のとき）
+
+ターミナル / Git Bash で（GitHub と同じメールや GitHub の noreply メールでも可）：
+
+```
+git config --global user.name "あなたの名前"
+git config --global user.email "あなたのメールアドレス"
+```
+
+### `.gitignore` の例（不要な差分を減らす）
+
+プラグインの **Edit .gitignore** から編集するか、Vault 直下に追記します。このキットには既に `.DS_Store` 用の設定があります。必要に応じて追加の例：
+
+```
+.trash/
+.DS_Store
+Thumbs.db
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+```
+
+| 候補 | 目的 |
+| --- | --- |
+| `.trash/` | ゴミ箱をバックアップ対象から外す |
+| `Thumbs.db` | Windows のサムネイルキャッシュ |
+| `.obsidian/workspace.json` | 端末ごとに変わりやすいレイアウト情報（共有したい場合は入れない選択も可） |
 
 ---
 
 ## STEP 7：自動バックアップの設定をする
 
-プラグインをインストールしたら、設定を変更します。
+設定 → コミュニティプラグイン → **Git** のオプションを開きます。項目名はプラグインのバージョンで多少異なる場合があります。
 
-1. 設定画面の左メニューに「Git」が追加されているのでクリック
-2. 以下の項目を変更：
+| 設定項目（目安） | 推奨 | 意味 |
+| --- | --- | --- |
+| Vault backup interval（分） | `10` | 自動でコミットする間隔 |
+| Auto push interval（分） | `10` | GitHub へ送る間隔 |
+| Auto pull on startup | **オン** | 起動時にリモートの変更を取り込む（複数 PC で便利） |
+| Pull before push など | **オンまたは既定** | 競合リスクを下げる |
+| 自動コミットメッセージ | 例：`backup: {{date}}` | あとから履歴を追いやすくする |
 
-| 設定項目 | 変更後の値 |
-|---------|----------|
-| Vault backup interval (minutes) | `10` |
-| Auto push interval (minutes) | `10` |
+> 「Vault backup interval」を `0` にすると無効になる版もあるため、**10 など正の数**になっているか確認してください。
 
-> 「Vault backup interval」は自動コミット（変更を記録）する間隔。  
-> 「Auto push interval」はGitHubに送信する間隔。どちらも10分ごとに設定します。
-
-3. 設定を閉じる
+設定後、Obsidian を一度再起動し、**10 分以上あけて** GitHub の **Commits** に新しいコミットが付くか確認します。
 
 ---
 
 ## 動作確認
 
-設定が正しくできているか確認します。
+### リモートが登録されているか
 
-ターミナルで以下を実行：
+ターミナル / Git Bash で Vault フォルダにいて：
 
 ```
 git remote -v
 ```
 
-以下のように表示されれば成功です：
+次のように `origin` と GitHub の URL が出れば成功例です。
 
 ```
 origin  https://github.com/（ユーザー名）/obsidian-vault.git (fetch)
 origin  https://github.com/（ユーザー名）/obsidian-vault.git (push)
 ```
 
-10分後、GitHubのページ（[https://github.com/（ユーザー名）/obsidian-vault](https://github.com)）を開くと、ファイルが反映されているはずです。
+### チェックリスト
+
+| 確認項目 | 期待すること |
+| --- | --- |
+| 初回 push が成功した | GitHub のコード画面に Vault のファイルが見える |
+| 約 10 分後に自動で履歴が増える | GitHub の Commits が増える（Obsidian を開いたまま） |
+| 編集していないのに履歴だけ増え続ける | `.gitignore`（特に `workspace.json`）を見直す |
+| 起動時にエラーが出ない | 認証・ネットワーク・リモート URL を確認 |
 
 ---
 
 ## 日常の使い方
 
-**何もしなくていいです。**
+Obsidian を開いている間、設定した間隔で自動バックアップが動きます。
 
-Obsidianを開いている間、10分ごとに自動でバックアップが取られます。
+**すぐ送りたいとき：** 左サイドバーのソース管理アイコンから **Commit and push**（または **Commit-and-sync**）。
 
-手動でいますぐバックアップしたい場合は：
-
-- Obsidianの左サイドバーにある「ソースコントロール」アイコン（分岐した線のマーク）をクリック
-- 「Commit and push」ボタンをクリック
+**PC を閉じる前・別 PC に移る前：** 自動を待たず、手動で **Commit and push** を一度実行しておくと安心です。
 
 ---
 
 ## 困ったときは
 
-### 「git: command not found」と表示される
+### 「git: command not found」
 
-→ STEP 2のGitのインストールからやり直してください。Windowsの場合はGit Bashを使っているか確認してください。
+→ STEP 2 をやり直す。Windows では **Git Bash** を使っているか確認。
 
-### 「gh: command not found」と表示される
+### 「gh: command not found」
 
-→ STEP 3のGitHub CLIのインストールからやり直してください。インストール後はターミナルを一度閉じて開き直してください。
+→ STEP 3 をやり直す。インストール後はターミナルを開き直す。
 
-### 10分待ってもGitHubに反映されない
+### Push 時に認証エラー
 
-→ Obsidianの設定で「Git」プラグインが「有効」になっているか確認してください。
+→ 通常パスワードではなく **PAT** を使うか、Git Credential Manager / `osxkeychain` を確認（上記「GitHub の HTTPS 認証」）。
 
-### エラーが出てよくわからない
+### 「remote origin already exists」
 
-→ エラーメッセージをスクリーンショットに撮って、Cursorのチャットに貼り付けて「このエラーはどういう意味ですか？」と聞いてください。
+→ プラグインまたはターミナルで `git remote -v` を確認し、URL が意図したリポジトリか確認。**Edit remotes** で修正。
+
+### 10 分待っても GitHub に反映されない
+
+→ Obsidian が起動しているか、プラグインが有効か、間隔が `0` になっていないか、通知に Git エラーが出ていないかを確認。
+
+### 毎回いらない差分が大量に出る
+
+→ `.gitignore` に `.DS_Store`、`Thumbs.db`、必要なら `.obsidian/workspace.json` を追加。
+
+### 複数 PC で競合した
+
+→ **Auto pull on startup** をオンにし、別 PC に行く前に手動で Commit-and-sync。
+
+### GitHub に載せたくないファイルを push してしまった
+
+→ ファイルを消すだけでは **履歴に残る**ことがあります。トークン類は **無効化・ローテーション** を検討し、深刻な場合は履歴の書き換えが必要になることがあります（上級者向け）。
+
+### エラーがよく分からない
+
+→ メッセージのスクリーンショットを Cursor に貼り、「このエラーの意味と次の一手は？」と聞いてください。
 
 ---
 
 ## バックアップから復元する方法
 
-間違ってファイルを消した・内容を戻したいという場合：
+### パターンA：1 ファイルだけ過去に戻したい
 
-1. [https://github.com/（ユーザー名）/obsidian-vault](https://github.com) を開く
-2. 目的のファイルを探してクリック
-3. 「History」をクリックすると過去のバージョン一覧が表示される
-4. 戻したいバージョンをクリックして内容をコピー
+1. GitHub 上のリポジトリでファイルを開く
+2. **History** から過去版を開き、内容をコピー
 
-または、Obsidianの「ファイルリカバリー」プラグイン（デフォルトで入っています）を使う：
+または Obsidian の **ファイルリカバリー**（コアプラグイン）：
 
-1. 設定 → 「コアプラグイン」→「ファイルリカバリー」が有効になっているか確認
-2. 復元したいファイルを開いた状態で、コマンドパレット（`Cmd+P` / `Ctrl+P`）を開く
-3. 「ファイルリカバリー：スナップショットを表示」で過去のバージョン一覧が表示される
+1. 設定 → コアプラグイン → ファイルリカバリーがオンか確認
+2. 対象ファイルを開いた状態でコマンドパレット（`Cmd+P` / `Ctrl+P`）
+3. 「ファイルリカバリー：スナップショットを表示」
+
+### パターンB：PC を替えて Vault ごと取り戻す
+
+1. 新しい PC に **Git** と **Obsidian** を入れ、GitHub に認証できる状態にする
+2. GitHub リポジトリの **Code** から HTTPS URL（`.git` で終わるもの）をコピー
+3. 保存したい場所で：
+
+```
+git clone https://github.com/ユーザー名/リポジトリ名.git
+```
+
+4. Obsidian の **Open folder as vault** で、clone したフォルダを開く
+
+---
+
+## 運用ルール（目安）
+
+| テーマ | 推奨 |
+| --- | --- |
+| 間隔 | 基本 10 分。編集が極端に多いときは 5 分、負荷を抑えたいときは 15〜30 分 |
+| 機密 | パスワード・API キー・顧客秘密はノートに書かない、または Git 対象外を徹底 |
+| 添付 | 画像・PDF が膨大ならリポジトリサイズをたまに確認（大きなバイナリの頻繁な差分替えは Git に向かないこともある） |
+| モバイル | Obsidian Git の公式ドキュメントでは、**モバイル版の Git 実装は不安定になり得る**旨が述べられています。本手順は **PC 版中心**の想定です |
+
+---
+
+## 参考リンク（公式）
+
+| # | リンク | 内容 |
+| --- | --- | --- |
+| 1 | [Vinzent03/obsidian-git](https://github.com/Vinzent03/obsidian-git) | プラグイン概要・自動同期 |
+| 2 | [Obsidian Git: Authentication](https://publish.obsidian.md/git-doc/Authentication) | HTTPS・Credential Manager・osxkeychain |
+| 3 | [GitHub: Creating a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) | 空リポジトリ作成・初期ファイルの注意 |
+| 4 | [Git for Windows](https://git-scm.com/install/windows) | Windows 向け Git |
+| 5 | [Git for macOS](https://git-scm.com/install/mac) | macOS 向け Git |
+| 6 | [GitHub: Personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) | PAT の扱い |
+| 7 | [Obsidian Git: Getting Started](https://publish.obsidian.md/git-doc/Getting+Started) | 初期化・空リモートへの push・clone・モバイル注意 |
+
+---
+
+画面や設定名は **GitHub / Git / Obsidian / プラグインのバージョン** で変わることがあります。表示が本書と違う場合は、上記公式ドキュメントで **同じ意味の項目** を選んでください。
