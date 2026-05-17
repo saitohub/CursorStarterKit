@@ -1,6 +1,6 @@
 ---
-name: journal-fix
-description: 今日のジャーナルを整形（誤字・音声スペース・改行のみ）。内容は変えず上書き保存。
+name: !journal-fix
+description: 【よく使う】今日のジャーナルを整形（誤字・音声スペース・改行のみ）。内容は変えず上書き保存。
 disable-model-invocation: true
 ---
 
