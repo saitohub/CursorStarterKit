@@ -175,7 +175,7 @@
 
 - `01_Notes/AI分身ラボ/MOC - AI分身ラボ.md`  
 - `01_Notes/AI分身ラボ/第1項 - 講座の全体像とゴール/第1項 - 講座の全体像とゴール.md`  
-- `05_Outputs/note-記事-2026-05-14-Cursorでやったこと（AI分身ラボ整理とMOC）.md`  
+- `05_Outputs/note/note-記事-2026-05-14-Cursorでやったこと（AI分身ラボ整理とMOC）.md`  
 - `03_Knowledge/Logic/Logic - 行動が止まるのは設計と入力単位の問題.md`  
 - `03_Knowledge/Claim/Claim - 外に出す前に内側と手順を整える.md`  
 - `03_Knowledge/Logic/Logic - 一次確認と文脈まで疑う.md`

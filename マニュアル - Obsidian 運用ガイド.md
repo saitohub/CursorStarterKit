@@ -255,6 +255,7 @@ Cursorで作ったメルマガ・記事が05_Outputsに保存されている
 | 03_Knowledge/Logic | `Logic - タイトル` | `Logic - 売上の方程式` |
 | 03_Knowledge/Evidence | `Evidence - タイトル` | `Evidence - エビングハウスの忘却曲線` |
 | 04_Journals | `YYYY-MM-DD` | `2026-03-22` |
+| 05_Outputs/note | `note-記事-…` / `note貼り付け用-…` / `note原稿-…` など | `note-記事-2026-05-17-タイトル` |
 | 05_Outputs/Mail Magazine | `Mail - 通数 タイトル` | `Mail - 1通目 はじめまして` |
 | 05_Outputs/Article | `Article - タイトル` | `Article - AI設計の重要性` |
 | 05_Outputs/SNS | `SNS - YYYY-MM-DD` | `SNS - 2026-03-22` |
