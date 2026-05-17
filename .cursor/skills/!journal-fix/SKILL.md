@@ -87,6 +87,20 @@ disable-model-invocation: true
 
 ## 注意事項
 
-- frontmatter（`---` で囲まれた部分）は変更しない
+- frontmatter（`---` で囲まれた部分）は変更しない（`.cursor/rules/journal-frontmatter.mdc` 参照）
 - `## Journal` 等のセクション見出しは変更しない
 - 判断に迷う箇所は変えない。過剰整形より未整形の方がいい
+
+### frontmatter の正しい形（保存前に必ず確認）
+
+```yaml
+---
+type: journal
+date: YYYY-MM-DD
+tags: [journal]
+---
+```
+
+- `## type: journal` のように `##` を付けない
+- 終了の `---` を消さない
+- 壊れていたら本文は触らず、先頭だけ上記に復元してから報告する
