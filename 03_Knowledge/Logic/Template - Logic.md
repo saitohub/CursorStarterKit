@@ -3,6 +3,7 @@ type: Logic
 tags: [logic]
 topic: ""
 created: <% tp.date.now("YYYY-MM-DD") %>
+status: draft
 ---
 
 <%*

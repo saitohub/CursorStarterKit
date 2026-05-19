@@ -3,6 +3,7 @@ type: Claim
 tags: [claim]
 topic: ""
 created: <% tp.date.now("YYYY-MM-DD") %>
+status: draft
 linked_stories: []
 linked_logic: []
 linked_evidence: []

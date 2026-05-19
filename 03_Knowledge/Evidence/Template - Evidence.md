@@ -3,6 +3,7 @@ type: Evidence
 tags: [evidence]
 topic: ""
 created: <% tp.date.now("YYYY-MM-DD") %>
+status: draft
 source: ""
 ---
 

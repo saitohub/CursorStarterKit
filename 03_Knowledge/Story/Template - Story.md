@@ -3,6 +3,7 @@ type: Story
 tags: [story]
 topic: ""
 created: <% tp.date.now("YYYY-MM-DD") %>
+status: draft
 period: ""
 ---
 
