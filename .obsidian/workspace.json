@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Notes/無題のファイル.md",
+                "file": "04_Journals/2026-05-20.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "無題のファイル"
+              "title": "2026-05-20"
             }
           }
         ],
@@ -188,8 +188,9 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "e99a6ece7571e9be",
+  "active": "98aa89cb31444668",
   "lastOpenFiles": [
+    "01_Notes/無題のファイル.md",
     "無題のフォルダ",
     "04_Journals/2026-05-20.md",
     "03_Knowledge/Story/Story - つゆ自販機と現場の一声.md",
@@ -224,7 +225,6 @@
     "01_Notes/AI分身ラボ/第1項 - 講座の全体像とゴール",
     "01_Notes/AI分身ラボ/第2講",
     "05_Outputs/Cursor-Obsidian-実践入門",
-    "05_Outputs/Products/note-一人の不安",
-    "01_Notes/イチラボ/イチラボ・浅田すぐる - シーズン30-88-①（縦書き）.html"
+    "05_Outputs/Products/note-一人の不安"
   ]
 }
