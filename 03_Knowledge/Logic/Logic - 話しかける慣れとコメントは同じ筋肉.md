@@ -4,7 +4,7 @@ tags: [logic, 発信, 行動設計, 社会心理学]
 topic: 現場での短い声かけと、noteコメントの心理的コストは同型
 created: 2026-05-21
 updated: 2026-05-21
-source_journal: "チャット（コメント恐怖・つゆ自販機の回想）"
+  - "[[Story - つゆ自販機と現場の一声]]"
 ---
 
 #### 主張（自分用）
@@ -18,15 +18,15 @@ source_journal: "チャット（コメント恐怖・つゆ自販機の回想）
 
 1. **弱いつながり・短い交流とウェルビーイング**  
    Sandstrom & Dunn（2014）は、日記研究などを通じ、親密な関係だけでなく**クラスメートのような弱いつながり**との交流が多い日ほど、主観的幸福感や帰属感が高まることを報告している。  
-   - Sandstrom, G. M., & Dunn, E. W. (2014). Social interactions and well-being: The surprising power of weak ties. *Personality and Social Psychology Bulletin*, *40*(7), 910–922.
+   - Sandstrom, G. M., & Dunn, E. W. (2014). Social interactions and well-being: The surprising power of weak ties. *Personality and Social Psychology Bulletin*, *40*(7), 910–922. https://doi.org/10.1177/0146167214529792
 
 2. **見知らぬ人と話すことへの予測の誤り**  
    通勤などで、人は「一人の方が快適」と予測しがちだが、実際には**短い会話の方がより良い体験**になりやすい、という実験的知見がある（予測と体験のギャップ）。  
-   - Epley, N., & Schroeder, J. (2014). Mistakenly seeking solitude. *Journal of Experimental Psychology: General*, *143*(5), 1980–1999.
+   - Epley, N., & Schroeder, J. (2014). Mistakenly seeking solitude. *Journal of Experimental Psychology: General*, *143*(5), 1980–1999. https://doi.org/10.1037/a0037323
 
-3. **補足（同系統のメタ分析）**  
-   見知らぬ人との会話を避ける理由と、実際の体験のずれをまとめたレビュー／ミニメタ分析も、Sandstrom らのラインで蓄積されている（「怖い」と感じる予測が過大になりやすい、という方向の知見）。  
-   - 例：Boothby, E. J., & Sandstrom, G. M. 系の「strangers / predicted fears」関連論文（リポジトリや二次紹介でタイトル確認のうえ Evidence 化してよい）。
+3. **見知らぬ人との会話を避ける理由と、実際のギャップ（ミニメタ分析）**  
+   7研究・N=2,304を統合し、会話**前の予測**と**後の体験**を比較。人は見知らぬ人と話すことに消極的になりがちだが、会話後の体験は予測より良くなりやすい、など「恐れが過大になりやすい」方向のエビデンス。  
+   - Sandstrom, G. M., & Boothby, E. J. (2020). Why do people avoid talking to strangers? A mini meta-analysis of predicted fears and actual experiences talking to a stranger. *Self and Identity*. https://doi.org/10.1080/15298868.2020.1816568
 
 ※ 臨床の**段階的曝露**（小さく何度か接触する）が社交不安に用いられるのは別枠のエビデンスだが、「短く・負担の小さい接触から慣らす」と**発信上の設計**は整合する。医療的介入の代替ではない。
 
@@ -38,8 +38,9 @@ source_journal: "チャット（コメント恐怖・つゆ自販機の回想）
 
 #### 自分の一次情報（エピソード）
 
-- 東京・潤滑油の現場付近で珍しいつゆの自販機。近くのおばあちゃんに「美味しいのですか？」→「意外と人気みたいよ」。  
-- 同僚：「よくすぐ話しかけられるな、俺には無理」。
+詳細は **[[Story - つゆ自販機と現場の一声]]**。
+
+要約：東京・潤滑油の現場付近のつゆ自販機に、近くの人へ「美味しいのですか？」と聞いた→「意外と人気みたいよ」。同僚は「よく話しかけられるな、俺には無理」と。
 
 → **現場では既に「短い声かけ」が回っている**なら、noteコメントは「新しい人格を作る」ではなく**既存スキルの別舞台への移し替え**と捉えられる。
 
@@ -50,6 +51,7 @@ source_journal: "チャット（コメント恐怖・つゆ自販機の回想）
 
 #### 関連
 
+- [[Story - つゆ自販機と現場の一声]]  
 - [[Logic - For Youから始める発信の言い換え]]  
 - [[Logic - 例えと自分の体験を並列で結ぶと記憶と行動が残る]]  
 
