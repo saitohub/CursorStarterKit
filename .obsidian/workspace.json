@@ -110,7 +110,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "fb90f79dc14e49de",
@@ -176,7 +176,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -188,7 +188,7 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "98aa89cb31444668",
+  "active": "e99a6ece7571e9be",
   "lastOpenFiles": [
     "01_Notes/AI分身ラボ/第1項 - 講座の全体像とゴール/第1講 - これからのAIへの向き合い方.md",
     "01_Notes/AI分身ラボ/第1項 - 講座の全体像とゴール/第1講 - 文字起こし - 講座の全体像とゴール.md",

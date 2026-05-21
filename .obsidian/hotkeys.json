@@ -1,62 +1,93 @@
 {
   "app:go-back": [
     {
-      "modifiers": ["Mod"],
+      "modifiers": [
+        "Mod"
+      ],
       "key": "["
     }
   ],
   "app:go-forward": [
     {
-      "modifiers": ["Mod"],
+      "modifiers": [
+        "Mod"
+      ],
       "key": "]"
     }
   ],
   "markdown:toggle-preview": [
     {
-      "modifiers": ["Mod"],
+      "modifiers": [
+        "Mod"
+      ],
       "key": "E"
     }
   ],
   "editor:open-search": [
     {
-      "modifiers": ["Mod"],
+      "modifiers": [
+        "Mod"
+      ],
       "key": "F"
     }
   ],
   "global-search:open": [
     {
-      "modifiers": ["Mod", "Shift"],
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
       "key": "F"
     }
   ],
   "templater-obsidian:insert-templater": [
     {
-      "modifiers": ["Mod"],
+      "modifiers": [
+        "Mod"
+      ],
       "key": "T"
     }
   ],
   "editor:toggle-bold": [
     {
-      "modifiers": ["Alt"],
+      "modifiers": [
+        "Alt"
+      ],
       "key": "B"
     }
   ],
   "app:reload": [
     {
-      "modifiers": ["Mod", "Shift"],
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
       "key": "R"
     }
   ],
   "app:toggle-left-sidebar": [
     {
-      "modifiers": ["Mod"],
+      "modifiers": [
+        "Mod"
+      ],
       "key": "S"
     }
   ],
   "app:toggle-right-sidebar": [
     {
-      "modifiers": ["Mod"],
+      "modifiers": [
+        "Mod"
+      ],
       "key": "R"
+    }
+  ],
+  "window:zoom-in": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": ";"
     }
   ]
 }
