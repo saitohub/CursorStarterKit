@@ -65,6 +65,30 @@ Claude Code で作業する際も、これらのルールを同様に適用す�
 - `journal-frontmatter.mdc` — ジャーナルファイルのフロントマター形式
 - `read-discipline.mdc` — ファイル読み込み時の規律
 
+## note-word スキルの使い方
+
+`簡易型Note作成くん` スキルを使って note 記事を生成できる。スキルは Vault の `.claude/skills/note-word/` に配置済み。
+
+### 実行方法
+
+Claude Code の作業ディレクトリを **このVault（CursorStarterKit）** にした状態で呼び出す：
+
+```
+note-wordスキルで「〇〇」の記事を書いて
+```
+
+### 出力先ルール
+
+生成された記事フォルダ（`YYYYMMDD_slug/`）は必ず **`05_Outputs/note/`** に保存する。
+ツール側の `output/articles/` に出力された場合も、完成後に `05_Outputs/note/` へ移動すること。
+
+### 依存ライブラリ（初回のみ）
+
+```bash
+pip install -r .claude/skills/note-word/requirements.txt
+playwright install chromium
+```
+
 ## 利用可能なコマンド（Cursor commands → Claude Codeでの代替）
 
 | コマンド | 内容 |

@@ -1,0 +1,25 @@
+{
+  "title": "Claude Codeで記事を自動生成してみた話",
+  "slug": "note-word-experience",
+  "created_at": "2026-05-28T00:00:00",
+  "tags": [
+    "Claude Code",
+    "AI活用",
+    "note収益化",
+    "自動化",
+    "体験談"
+  ],
+  "target_reader": "AIツールを使ってnoteを効率化したい発信者",
+  "tone": "個人体験ベース・カジュアル丁寧体",
+  "article_style": "info",
+  "style_notes": "",
+  "target_chars": 3000,
+  "actual_chars": 2772,
+  "image_mode": {
+    "thumbnail": "playwright-html",
+    "figure_01": "playwright-html",
+    "figure_02": "playwright-html"
+  },
+  "research_path": "",
+  "notes": "体験談記事。note-wordスキルを使った実際の体験を一人称で書く"
+}
