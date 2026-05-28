@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-05-28.md",
+                "file": "05_Outputs/note/20260528_ai-note-monetization/article.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-05-28"
+              "title": "article"
             }
           }
         ],
@@ -190,6 +190,11 @@
   },
   "active": "98aa89cb31444668",
   "lastOpenFiles": [
+    "マニュアル - Obsidian 運用ガイド.md",
+    "04_Journals/2026-04-20.md",
+    "01_Notes/イチラボ/イチラボ・浅田すぐる - シーズン30-88-①.md",
+    "01_Notes/習慣 - 走る前1行（的と行動）.md",
+    "04_Journals/2026-05-28.md",
     "05_Outputs/note/20260528_note-word-experience/images/thumbnail.png",
     "05_Outputs/note/20260528_note-word-experience/images/figure_02.png",
     "05_Outputs/note/20260528_note-word-experience/images/figure_01.png",
@@ -208,8 +213,6 @@
     "05_Outputs/note/20260528_ai-note-monetization/article.docx",
     "05_Outputs/note/20260528_ai-note-monetization",
     "05_Outputs/note/note-記事-2026-05-28-有料note売れなかった話と収益化の現実.md",
-    "01_Notes/イチラボ/イチラボ・浅田すぐる - シーズン30-88-①.md",
-    "04_Journals/2026-05-28.md",
     "04_Journals/2026-05-26.md",
     "04_Journals/2026-05-25.md",
     "04_Journals/2026-04-22.md",
@@ -228,8 +231,6 @@
     "05_Outputs/note/note原稿-2026-05-26-AquaVoice解約したのに課金が続いた盲点.md",
     "05_Outputs/note/note原稿-2026-05-25-無料CursorとClaude Codeで清書コピペが消えた.md",
     "05_Outputs/note/note貼り付け用-2026-05-25-無料CursorとClaude Codeで清書コピペが消えた.md",
-    "05_Outputs/note/note貼り付け用-2026-05-23-音声AI入力とCursorのタイピング遅延怪奇現象.md",
-    "05_Outputs/note/note-記事-2026-05-23-音声AI入力とCursorのタイピング遅延怪奇現象.md",
     "05_Outputs/note"
   ]
 }
