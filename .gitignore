@@ -1,2 +1,4 @@
 .DS_Store
 **/.DS_Store
+token.json
+client_secret*.json
