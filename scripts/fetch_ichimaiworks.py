@@ -10,7 +10,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
-TOKEN_FILE = 'token.json'
+SECRETS_DIR = os.path.expanduser('~/secrets/gmail_api')
+TOKEN_FILE = os.path.join(SECRETS_DIR, 'token.json')
 OUTPUT_FILE = 'ichimaiworks_list.csv'
 SEARCH_QUERY = 'subject:イチゼミ OR subject:アカデミア OR subject:イチトレ OR subject:イチヘリ after:2019/01/01'
 
@@ -18,12 +19,11 @@ THEME_PREFIXES = ['イチゼミ', 'アカデミア', 'イチトレ', 'イチヘ�
 
 
 def get_credentials_file():
-    if os.path.exists('credentials.json'):
-        return 'credentials.json'
-    matches = glob.glob('client_secret_*.json')
-    if matches:
-        return matches[0]
-    raise FileNotFoundError('認証ファイルが見つかりません。credentials.json をこのフォルダに置いてください。')
+    for name in ['credentials.json', 'client_secret_*.json']:
+        matches = glob.glob(os.path.join(SECRETS_DIR, name))
+        if matches:
+            return matches[0]
+    raise FileNotFoundError(f'認証ファイルが見つかりません。client_secret_*.json を {SECRETS_DIR} に置いてください。')
 
 
 def get_gmail_service():

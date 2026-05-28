@@ -18,7 +18,7 @@ python scripts/fetch_ichimaiworks.py
 python scripts/fetch_ichilabo.py
 ```
 
-**認証ファイルの場所：** `client_secret_*.json` をリポジトリルートに置く。初回実行時にブラウザ認証が走り、`token.json` が生成される。以降は自動更新。
+**認証ファイルの場所：** `client_secret_*.json` を `~/secrets/gmail_api/` に置く。初回実行時にブラウザ認証が走り、`~/secrets/gmail_api/token.json` が生成される。以降は自動更新。認証ファイルはVault外に保管するためGitには含まれない。
 
 依存ライブラリ: `google-auth`, `google-auth-oauthlib`, `google-api-python-client`
 
