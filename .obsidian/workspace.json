@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-04-14.md",
+                "file": "04_Journals/2026-05-31.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-14"
+              "title": "2026-05-31"
             }
           }
         ],
@@ -188,8 +188,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7ec4c46d00a2e963",
+  "active": "98aa89cb31444668",
   "lastOpenFiles": [
+    "04_Journals/2026-04-14.md",
+    "04_Journals/2026-05-31.md",
     "05_Outputs/note/note貼り付け用-2026-05-26-AquaVoice解約したのに課金が続いた盲点.md.tmp.976.bf7976db53f0",
     "05_Outputs/note/note-記事-2026-05-29-GitHubに認証ファイルをコミットしてしまった話.md.tmp.20979.218a17b34db9",
     "05_Outputs/note/note-記事-2026-05-29-GitHubに認証ファイルをコミットしてしまった話.md",
@@ -211,7 +213,6 @@
     "05_Outputs/note/20260528_note-word-experience/metadata.json",
     "05_Outputs/note/20260528_note-word-experience/images",
     "05_Outputs/note/20260528_note-word-experience/article.md",
-    "05_Outputs/note/20260528_note-word-experience/article.docx",
     "05_Outputs/note/20260528_ai-note-monetization/images/thumbnail.png",
     "05_Outputs/note/20260528_ai-note-monetization/images/figure_02.png",
     "05_Outputs/note/20260528_ai-note-monetization/images/figure_01.png",
@@ -230,7 +231,6 @@
     "01_Notes/AI分身ラボ/第1項 - 講座の全体像とゴール/第1講 - 文字起こし - 講座の全体像とゴール.md",
     "04_Journals/2026-05-24.md",
     "05_Outputs/note/note貼り付け用-2026-05-26-AquaVoice解約したのに課金が続いた盲点.md",
-    "01_Notes/メモ.md",
-    "05_Outputs/note/note原稿-2026-05-26-AquaVoice解約したのに課金が続いた盲点.md"
+    "01_Notes/メモ.md"
   ]
 }
