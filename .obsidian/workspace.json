@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-06-01.md",
+                "file": "04_Journals/2026-06-02.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-01"
+              "title": "2026-06-02"
             }
           }
         ],
@@ -190,6 +190,8 @@
   },
   "active": "98aa89cb31444668",
   "lastOpenFiles": [
+    "04_Journals/2026-06-01.md",
+    "04_Journals/2026-06-02.md",
     "05_Outputs/note/note貼り付け用-ClaudeCode文字起こし整理でハマった3つの壁.md",
     "05_Outputs/note/note-記事-ClaudeCode文字起こし整理でハマった3つの壁.md",
     "05_Outputs/note/note-記事-ClaudeCode文字起こし整理でハマった3つの壁.md.tmp.10460.945e155bd45a",
@@ -212,7 +214,6 @@
     "01_Notes/AI分身ラボ/生文字起こし/第10講 - 生文字起こし - ファクトチェックを必ずしなさい.md",
     "01_Notes/AI分身ラボ/生文字起こし/第9講 - 生文字起こし - 03Knowledgeフォルダ、あなたの分身の核を作る.md",
     "04_Journals/2026-05-31.md",
-    "04_Journals/2026-06-01.md",
     "01_Notes/AI分身ラボ/生文字起こし/第8講 - 生文字起こし - 07スワイプフォルダの正しい使い方.md",
     "01_Notes/AI分身ラボ/生文字起こし/第7講 - 生文字起こし - ゴミ収集と指向性、入れるべき情報と入れない情報.md",
     "01_Notes/AI分身ラボ/生文字起こし/第6講 - 生文字起こし - 音声入力で素材収集を爆速で進める.md",
@@ -228,7 +229,6 @@
     "04_Journals/2026-04-14.md",
     "05_Outputs/note/note-記事-2026-05-29-GitHubに認証ファイルをコミットしてしまった話.md",
     "05_Outputs/note/20260528_ai-note-monetization/article.md",
-    "マニュアル - Obsidian 運用ガイド.md",
     "05_Outputs/note/20260528_note-word-experience/images/thumbnail.png",
     "05_Outputs/note/20260528_note-word-experience/images/figure_02.png",
     "05_Outputs/note/20260528_note-word-experience/images/figure_01.png",
