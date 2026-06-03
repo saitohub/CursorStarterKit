@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-06-02.md",
+                "file": "04_Journals/2026-06-03.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-02"
+              "title": "2026-06-03"
             }
           }
         ],
@@ -190,8 +190,9 @@
   },
   "active": "98aa89cb31444668",
   "lastOpenFiles": [
-    "04_Journals/2026-06-01.md",
     "04_Journals/2026-06-02.md",
+    "04_Journals/2026-06-03.md",
+    "04_Journals/2026-06-01.md",
     "05_Outputs/note/note貼り付け用-ClaudeCode文字起こし整理でハマった3つの壁.md",
     "05_Outputs/note/note-記事-ClaudeCode文字起こし整理でハマった3つの壁.md",
     "05_Outputs/note/note-記事-ClaudeCode文字起こし整理でハマった3つの壁.md.tmp.10460.945e155bd45a",
@@ -228,7 +229,6 @@
     "05_Outputs/note/20260531_ai-forget-yourself/images/figure_01.png",
     "04_Journals/2026-04-14.md",
     "05_Outputs/note/note-記事-2026-05-29-GitHubに認証ファイルをコミットしてしまった話.md",
-    "05_Outputs/note/20260528_ai-note-monetization/article.md",
     "05_Outputs/note/20260528_note-word-experience/images/thumbnail.png",
     "05_Outputs/note/20260528_note-word-experience/images/figure_02.png",
     "05_Outputs/note/20260528_note-word-experience/images/figure_01.png",
