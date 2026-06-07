@@ -100,3 +100,4 @@ playwright install chromium
 | `/promotion-scaffold` | プロモーション配信メール一括生成 |
 | `/setup-target` | ターゲット設計インタビュー（my-business.mdc更新） |
 | `/setup-character` | キャラクター設計インタビュー（my-business.mdc更新） |
+| `/threads-post` | Threads投稿スレッドのドラフト生成 |
