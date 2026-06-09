@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-06-09.md",
+                "file": "04_Journals/2026-06-08.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-09"
+              "title": "2026-06-08"
             }
           }
         ],
@@ -110,7 +110,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 211.5
+    "width": 211.5,
+    "collapsed": true
   },
   "right": {
     "id": "fb90f79dc14e49de",
@@ -176,7 +177,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -190,8 +192,8 @@
   },
   "active": "98aa89cb31444668",
   "lastOpenFiles": [
-    "04_Journals/2026-06-08.md",
     "04_Journals/2026-06-09.md",
+    "04_Journals/2026-06-08.md",
     "05_Outputs/note/note-記事-2026-06-09-AIを使っているのに空回りしていた私が気づいた3つのクセ.md",
     "CLAUDE.md.tmp.88875.00b0584d6783",
     "CLAUDE.md.tmp.88875.bde72a71c373",
