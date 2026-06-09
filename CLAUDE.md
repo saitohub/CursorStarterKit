@@ -226,3 +226,4 @@ playwright install chromium
 | `/setup-character` | キャラクター設計インタビュー（my-business.mdc更新） |
 | `/threads-post` | Threads投稿スレッドのドラフト生成 |
 | `/fact-check` | 公開前のnote記事のファクトチェック（数字・AIツール情報・体験矛盾・断言・トーン違反の5項目） |
+| `/diff-log` | 記事修正後にライティングコレクションログへ差分を記録する |
