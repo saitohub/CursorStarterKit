@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Outputs/note/note-記事-2026-06-16-仮面ライダーが50年続く理由.md",
+                "file": "04_Journals/2026-06-17.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "note-記事-2026-06-16-仮面ライダーが50年続く理由"
+              "title": "2026-06-17"
             }
           },
           {
@@ -205,8 +205,9 @@
   },
   "active": "a2970d06648c03c9",
   "lastOpenFiles": [
-    "04_Journals/2026-06-16.md",
     "05_Outputs/note/note-記事-2026-06-16-仮面ライダーが50年続く理由.md",
+    "04_Journals/2026-06-17.md",
+    "04_Journals/2026-06-16.md",
     "05_Outputs/note/note-記事-2026-06-07-感情と行動はセットで使う.md",
     "05_Outputs/note/note-記事-2026-05-21-40代で時間がマッハで過ぎる問題.md",
     "05_Outputs/note/note-記事-2026-05-15-例え話を自分の体験とゴリ押しで結ぶ.md",
@@ -236,7 +237,6 @@
     "07_Swipe/Email/Swipe - ごっちんさん「やばい企画を作ってしまいました」件名設計.md",
     "07_Swipe/Email/Swipe - ごっちんさん【定時後】本音コラムフォーマット.md",
     "07_Swipe/Email/Swipe - ごっちんさん「たった一人に向けて書く」公言技法（6月8日）.md",
-    "07_Swipe/Email/Swipe - ごっちんさん読者メール引用テクニック（6月10日）.md",
     "scripts/fetch_gocchin_temp.py",
     "03_Knowledge/Evidence/Evidence - ドラッカーの計画的廃棄.md.tmp.27450.02eadb26bca1",
     "06_Reflections/Weekly/Reflection - 2026-W24週.md.tmp.27450.a571d6f9a944",
