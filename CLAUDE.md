@@ -84,9 +84,13 @@ note の記事・原稿は `05_Outputs/note/` 以下に保存する（`05_Output
 
 `Story -` / `Logic -` / `Claim -` / `Evidence -`
 
+**保存先は該当サブフォルダの中に入れる**：`Story/` `Logic/` `Claim/` `Evidence/` が既にあるので、`03_Knowledge/` 直下ではなく対応するサブフォルダ内に置く（例：`03_Knowledge/Logic/Logic - ○○.md`）。書き込む前に必ず該当フォルダの中身を一度確認する。
+
 #### 07_Swipe/（変更なし・維持）
 
 `Swipe -`
+
+他人の事例分析は `07_Swipe/` に置き、それを踏まえた自分の知識・改善点は `03_Knowledge/` に分けて保存する（1ファイルに混ぜない・swipe-guard準拠）。
 
 ### ターゲット読者（健一さん）
 
