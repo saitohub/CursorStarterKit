@@ -2,3 +2,4 @@
 **/.DS_Store
 token.json
 client_secret*.json
+.obsidian/
