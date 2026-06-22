@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Notes/ごっちんさんの大進撃/01_文字起こし/README.md",
+                "file": "04_Journals/2026-06-22.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "2026-06-22"
             }
           },
           {
@@ -100,7 +100,7 @@
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": false,
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -120,8 +120,7 @@
               "title": "ブックマーク"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -191,8 +190,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -204,8 +202,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a2970d06648c03c9",
+  "active": "e99a6ece7571e9be",
   "lastOpenFiles": [
+    "01_Notes/ごっちんさんの大進撃/01_文字起こし/README.md",
+    "04_Journals/2026-06-22.md",
     "07_Swipe/Threads/Swipe - Threads個人投稿ルール.md",
     "07_Swipe/Threads/Untitled",
     "07_Swipe/Threads/Swipe - Threadsバズ投稿量産型.md",
@@ -219,7 +219,6 @@
     "05_Outputs/note/未-note-記事-2026-06-21-ブランディング魅せ方.md",
     "05_Outputs/note/note-記事-2026-06-21-ブランディング魅せ方.md",
     "01_Notes/ごっちんさんの大進撃/02_グルコンメモ/グルコンメモ_20260604_メルマガ登録フォーム・ビジネスの本質・音読.md",
-    "01_Notes/ごっちんさんの大進撃/01_文字起こし/README.md",
     "01_Notes/ごっちんさんの大進撃/01_文字起こし/ごっちんさん.md",
     "01_Notes/note収益化_がんばとの対話まとめ.md",
     "01_Notes/ごっちんさんの大進撃/02_グルコンメモ/グルコンメモ_20260615_日記から切り口を見つける.md",
@@ -237,7 +236,6 @@
     "04_Journals/2026-06-09.md",
     "04_Journals/2026-06-12.md",
     "04_Journals/2026-06-19.md",
-    "02_Configs/Templates/Template - Daily Journal.md",
     "05_Outputs/note/2026-06-19-cursor-ai-followup-design.md.tmp.76262.4dd05ea02d38",
     "05_Outputs/note/Untitled",
     "05_Outputs/note/note-有料-20260618-AIと3時間で音声入力アプリを自作する手順書.md.tmp.53481.7a2f90fad0f5",
