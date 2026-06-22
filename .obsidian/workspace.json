@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Journals/2026-06-22.md",
+                "file": "04_Journals/2026-04-14.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-22"
+              "title": "2026-04-14"
             }
           },
           {
@@ -99,7 +99,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "SPEC",
+                "query": "＃💡",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,7 +120,8 @@
               "title": "ブックマーク"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -202,13 +203,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a2970d06648c03c9",
+  "active": "96a176dfdf204ceb",
   "lastOpenFiles": [
+    "04_Journals/2026-06-22.md",
     "01_Notes/AI分身ラボ/第2項 - なぜこのフォルダー構成なのか、基礎用語と設計の意図と企画について/第2講 - 振り返り - 設計を自分の言葉で.md",
     "01_Notes/AI分身ラボ/第2項 - なぜこのフォルダー構成なのか、基礎用語と設計の意図と企画について/第2講 - 基礎用語とフォルダ設計.md",
     "01_Notes/AI分身ラボ/第1項 - 講座の全体像とゴール/第1講 - これからのAIへの向き合い方.md",
     "01_Notes/池田貴将-メモ.md",
-    "04_Journals/2026-06-22.md",
     "01_Notes/ごっちんさんの大進撃/01_文字起こし/README.md",
     "07_Swipe/Threads/Swipe - Threads個人投稿ルール.md",
     "07_Swipe/Threads/Untitled",
