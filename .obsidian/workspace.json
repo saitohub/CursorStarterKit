@@ -181,8 +181,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-ghost",
+              "title": "git-view"
             }
           }
         ],
@@ -197,9 +197,7 @@
       "switcher:クイックスイッチャーを開く": false,
       "daily-notes:今日のデイリーノートを開く": false,
       "templates:テンプレートを挿入": false,
-      "command-palette:コマンドパレットを開く": false,
-      "templater-obsidian:Templater": false,
-      "obsidian-git:Open Git source control": false
+      "command-palette:コマンドパレットを開く": false
     }
   },
   "active": "a2970d06648c03c9",
