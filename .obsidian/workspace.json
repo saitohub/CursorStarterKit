@@ -181,8 +181,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-view"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
@@ -197,19 +197,22 @@
       "switcher:クイックスイッチャーを開く": false,
       "daily-notes:今日のデイリーノートを開く": false,
       "templates:テンプレートを挿入": false,
-      "command-palette:コマンドパレットを開く": false
+      "command-palette:コマンドパレットを開く": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "a2970d06648c03c9",
   "lastOpenFiles": [
+    "01_Notes/罵詈雑言ワーク/罵詈雑言ワーク - 2026-06-22 講座メモ.md",
+    "マニュアル - AIにあなたの文体を覚えさせる.md",
+    "04_Journals/2026-06-23.md",
     "log.txt",
     "04_Journals/2026-06-22.md",
-    "04_Journals/2026-06-23.md",
     "01_Notes/スタディサプリ国語 - 小1メモ.md",
     "03_Knowledge/Claim/Claim - 動けない正体は閉じ込めた感情のフタ.md",
     "07_Swipe/Swipe - ポンポンさんセールスレター目次の正体（5幕構成）.md",
     "05_Outputs/note/note-記事-2026-06-22-怒りがゼロだった話.md",
-    "01_Notes/罵詈雑言ワーク/罵詈雑言ワーク - 2026-06-22 講座メモ.md",
     "01_Notes/罵詈雑言ワーク",
     "CLAUDE.md.tmp.26721.12400557ec1c",
     "03_Knowledge/Logic/Logic - 共感エピソード昇華型（煽らず胸を打つ）.md",
@@ -237,7 +240,6 @@
     "01_Notes/ごっちんさんの大進撃/01_文字起こし",
     "01_Notes/ごっちんさんの大進撃/文字起こし",
     "05_Outputs/note/2026-06-19-cursor-ai-followup-design.md.tmp.76262.4dd05ea02d38",
-    "05_Outputs/note/Untitled",
     "05_Outputs/note/20260531_ai-forget-yourself/images/figure_02.png",
     "05_Outputs/note/20260531_ai-forget-yourself/images/thumbnail.png",
     "05_Outputs/note/20260531_ai-forget-yourself/images/figure_01.png",
