@@ -33,8 +33,9 @@ python scripts/fetch_ichilabo.py
 | `05_Outputs/` | 完成コンテンツ。noteは `05_Outputs/note/` 以下に保存 |
 | `06_Reflections/` | 週次・月次振り返り（Weekly / Monthly） |
 | `07_Swipe/` | **他人の**事例ライブラリ（構造参考のみ） |
-| `.cursor/rules/` | AIへの永続指示（my-business.mdc が中心） |
-| `.cursor/commands/` | Cursorスラッシュコマンドの定義 |
+| `.claude/rules/` | AIへの永続指示（my-business.mdc が中心） |
+| `.claude/commands/` | スラッシュコマンドの定義 |
+| `.claude/skills/` | スキル定義（note-word ほか） |
 | `scripts/` | Gmail APIスクリプト |
 
 ## コンテンツ制作の重要ルール
@@ -196,7 +197,7 @@ frontmatter内にMarkdown見出し（`##`）を入れない。`type`/`date`/`tag
 
 次のマイルストーン：**初収益（1円でも）**。そのために今週何を出すかだけ考える。
 
-## .cursor/rules の主要ファイル（参照元）
+## .claude/rules の主要ファイル（参照元）
 
 - `my-business.mdc` — ビジネス設計の詳細版（上記ルールの元ファイル）
 - `swipe-guard.mdc` — 07_Swipeルールの元ファイル
