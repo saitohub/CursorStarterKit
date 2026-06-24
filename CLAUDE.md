@@ -202,6 +202,7 @@ frontmatter内にMarkdown見出し（`##`）を入れない。`type`/`date`/`tag
 - `my-business.mdc` — ビジネス設計の詳細版（上記ルールの元ファイル）
 - `swipe-guard.mdc` — 07_Swipeルールの元ファイル
 - `file-save-confirmation.mdc` / `journal-frontmatter.mdc` / `read-discipline.mdc` / `revenue-ceo.mdc` — 上記各ルールの元ファイル
+- `sns-summary.mdc` — note記事を作ったら X用120文字・スレッズ用180文字の要約を自動で添える
 
 ## note-word スキルの使い方
 
