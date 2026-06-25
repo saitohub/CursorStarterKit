@@ -1,0 +1,19 @@
+{
+  "title": "自分の声を録音して聞いてみた。顔真っ赤だった昔の自分に伝えたいこと",
+  "slug": "recording-my-voice",
+  "created_at": "2026-06-25T12:00:00",
+  "tags": ["自分の声", "録音", "成長", "練習", "自己受容"],
+  "target_reader": "note読者一般",
+  "tone": "個人体験ベース・カジュアル丁寧体",
+  "article_style": "info",
+  "style_notes": "",
+  "target_chars": 3000,
+  "actual_chars": 2725,
+  "image_mode": {
+    "thumbnail": "playwright-html",
+    "figure_01": "playwright-html",
+    "figure_02": "playwright-html"
+  },
+  "research_path": "research.md",
+  "notes": ""
+}
