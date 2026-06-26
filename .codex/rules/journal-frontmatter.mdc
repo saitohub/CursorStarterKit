@@ -1,0 +1,45 @@
+---
+description: 04_Journals の YAML frontmatter を壊さない。編集・整形・追記時に必ず守る。
+globs: 04_Journals/**
+alwaysApply: false
+---
+
+# ジャーナル frontmatter の保護
+
+`04_Journals/` 内のファイルを **作成・編集・整形・追記** するとき、先頭の frontmatter は次の形を **一字一句守る**。
+
+## 正しい形（この4行＋空行のみ。`##` は付けない）
+
+```yaml
+---
+type: journal
+date: YYYY-MM-DD
+tags: [journal]
+---
+```
+
+- 1行目: 開始の `---` のみ
+- 2行目: `type: journal`（`## type` や `# type` にしない）
+- 3行目: `date: ` + ファイル名と同じ日付（`YYYY-MM-DD.md`）
+- 4行目: `tags: [journal]`
+- 5行目: 終了の `---` のみ
+- 6行目: 空行
+- 7行目以降: 本文（`#### 今日のメモ` など）
+
+## 禁止
+
+- frontmatter 内に Markdown 見出し（`##`）を入れる
+- 終了の `---` を消す・本文と混ぜる
+- `type` / `date` / `tags` の行を削除・並べ替え・言い換え
+
+## 保存前チェック（AIが触ったあと）
+
+1. 1行目が `---` か
+2. 5行目が `---` か
+3. `type: journal` に `##` が付いていないか
+
+壊れていたら **本文はそのまま**、先頭だけ上記の形に直してから保存する。
+
+## 新規作成時
+
+`02_Configs/Templates/Template - Daily Journal.md` または `04_Journals/Template - Daily Journal.md` と同じ frontmatter を使う。

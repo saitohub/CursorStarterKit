@@ -1,0 +1,69 @@
+---
+name: monthly-journal
+description: 直近30日の月次ジャーナル振り返り。気づき追記・Knowledge候補・06_Reflections/Monthly に保存。
+disable-model-invocation: true
+---
+
+# /monthly-journal コマンド
+
+## 説明
+
+直近1ヶ月のジャーナルを振り返り、フィードバックと03_Knowledge候補の抽出を行う。
+結果は `06_Reflections/Monthly/` に保存される。
+
+## 実行方法
+
+Cursorのチャットで以下のように入力する：
+
+```text
+/monthly-journal
+```
+
+## 実行条件
+
+- 対象期間: 今日を終了日とする直近30日間、またはユーザーが指定した月
+- 収集元: `04_Journals/YYYY-MM-DD.md`
+- 振り返り保存先: `06_Reflections/Monthly/Reflection - YYYY-MM.md`
+- Knowledge保存先: `03_Knowledge/`
+
+## Cursor 3 以降の運用
+
+月次は情報量が多いため、必要に応じて `/multitask` や async subagents を使って並列化する。
+
+推奨分担:
+
+- 収集担当: 対象期間のジャーナルを読み込み、感情タグを整理する
+- 内省担当: 繰り返し出ているテーマ・感情・価値観を分析する
+- 親エージェント: 統合、採番、保存、ユーザー確認を担当する
+
+## このコマンドがやること
+
+1. `04_Journals/` から直近30日分のファイルを読み込む
+2. 月次フィードバックを生成する（成長・パターン・テーマ・次月への問いかけ）
+3. 気づきをジャーナルに追記する
+4. ここで一度停止し、「Step 3（Knowledgeの深掘り抽出）に進みますか？」と確認する
+5. ユーザーが進行を許可した場合のみ、03_Knowledge に入れる候補（Story/Logic/Evidence/Claim）を抽出し、深掘り質問を添える
+6. 深掘り質問への回答を受け取る（任意）
+7. `06_Reflections/Monthly/Reflection - YYYY-MM.md` として保存する
+8. 答えてもらった候補は `03_Knowledge/` 配下にファイルを作成する
+
+## 月次ならではの視点
+
+月次では週次に加えて以下も見る：
+
+- 1ヶ月を通じて変化したことがあるか
+- 繰り返し出てきたテーマの変化・深化
+- 来月に持ち越したい問いや課題
+
+## スキルの呼び出し
+
+以下のスキルを `timeframe: monthly` で実行する：
+`.cursor/skills/journal-crystallizer/SKILL.md`
+
+## 最重要
+
+- 月次では「繰り返し出ているテーマ」を優先する
+- 原文の感情表現をきれいに整えすぎない
+- 感情タグの派生タグを作らない
+- チェックボックス番号はファイル全体の最大番号の次から採番する
+- 保存・新規作成の前には必ず確認を取る
