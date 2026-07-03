@@ -73,7 +73,7 @@
     .panel-body { padding: 22px 24px 24px; }
 
     label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 800; }
-    input, textarea {
+    input, textarea, select {
       width: 100%;
       border: 1px solid #cbc9c0;
       border-radius: 12px;
@@ -82,12 +82,22 @@
       outline: none;
       transition: border-color .2s, box-shadow .2s;
     }
-    input { height: 46px; padding: 0 13px; }
+    input, select { height: 46px; padding: 0 13px; }
     textarea { min-height: 286px; padding: 13px; resize: vertical; line-height: 1.65; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
-    input:focus, textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(11,104,74,.12); }
+    input:focus, textarea:focus, select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(11,104,74,.12); }
 
     .field + .field { margin-top: 18px; }
     .hint { margin: 7px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .import-box { margin-bottom: 22px; padding: 17px; border: 1px solid #c9ded4; border-radius: 15px; background: #eef6f1; }
+    .import-box h3 { margin: 0 0 6px; font-size: 16px; }
+    .import-box p { margin: 0 0 13px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .import-box input[type="file"] { height: auto; padding: 10px; background: white; font-size: 12px; }
+    .mini-button { width: 100%; min-height: 40px; margin-top: 9px; border: 1px solid #b9d2c6; border-radius: 10px; color: var(--green-dark); background: white; cursor: pointer; font-weight: 900; }
+    .import-box select { margin-top: 10px; background: white; }
+    .import-status { display: none; margin-top: 10px !important; padding: 9px 10px; border-radius: 9px; color: var(--green-dark) !important; background: white; font-weight: 800; }
+    .import-status.show { display: block; }
+    .divider { display: flex; align-items: center; gap: 10px; margin: 0 0 19px; color: var(--muted); font-size: 11px; }
+    .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
     .actions { display: flex; gap: 10px; margin-top: 18px; }
 
     .button {
@@ -169,6 +179,18 @@
           <p>各評価は0〜100点。CSVの見出しはそのまま残してください。</p>
         </div>
         <div class="panel-body">
+          <div class="import-box">
+            <h3>keiba.go.jpのCSVから自動入力</h3>
+            <p>公式サイトからダウンロードしたZIPをFinderで展開し、<strong>horselist.csv</strong>を選択してください。<strong>odds.csv</strong>も同時に選ぶとオッズを反映します。</p>
+            <label for="official-files">公式CSVを選ぶ（複数選択可）</label>
+            <input id="official-files" data-testid="official-files" type="file" accept=".csv,text/csv" multiple>
+            <button class="mini-button" id="official-sample-button" data-testid="official-sample-button" type="button">公式CSVの見本で試す</button>
+            <select id="race-selector" data-testid="race-selector" aria-label="読み込むレース" disabled>
+              <option>CSVを選ぶとレース一覧が出ます</option>
+            </select>
+            <p class="import-status" id="import-status" role="status"></p>
+          </div>
+          <div class="divider">または手入力</div>
           <div class="field">
             <label for="race-name">レース名</label>
             <input id="race-name" data-testid="race-name" value="東京11R サンプル記念" autocomplete="off">
@@ -229,8 +251,172 @@
       recent: '近走', course: 'コース適性', distance: '距離適性', jockey: '騎手', condition: '状態', market: '市場評価'
     };
     const weights = { recent: .26, course: .20, distance: .18, jockey: .14, condition: .12, market: .10 };
+    let officialHorseRows = [];
+    let officialOddsRows = [];
 
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let cell = '';
+      let quoted = false;
+
+      for (let index = 0; index < text.length; index += 1) {
+        const character = text[index];
+        const next = text[index + 1];
+        if (character === '"' && quoted && next === '"') {
+          cell += '"';
+          index += 1;
+        } else if (character === '"') {
+          quoted = !quoted;
+        } else if (character === ',' && !quoted) {
+          row.push(cell.trim());
+          cell = '';
+        } else if ((character === '\n' || character === '\r') && !quoted) {
+          if (character === '\r' && next === '\n') index += 1;
+          row.push(cell.trim());
+          if (row.some(value => value !== '')) rows.push(row);
+          row = [];
+          cell = '';
+        } else {
+          cell += character;
+        }
+      }
+      if (cell || row.length) {
+        row.push(cell.trim());
+        if (row.some(value => value !== '')) rows.push(row);
+      }
+      return rows;
+    }
+
+    async function decodeCSVFile(file) {
+      const bytes = await file.arrayBuffer();
+      const utf8 = new TextDecoder('utf-8').decode(bytes);
+      const brokenCharacters = (utf8.match(/�/g) || []).length;
+      if (brokenCharacters > 2) return new TextDecoder('shift-jis').decode(bytes);
+      return utf8.replace(/^\uFEFF/, '');
+    }
+
+    function raceKey(row) {
+      return `${row[0]}|${row[1]}|${Number(row[2])}`;
+    }
+
+    function recordScore(record) {
+      const numbers = String(record || '').match(/\d+/g)?.map(Number) || [];
+      if (numbers.length < 4) return 50;
+      const [wins, seconds, thirds, others] = numbers;
+      const starts = wins + seconds + thirds + others;
+      if (!starts) return 50;
+      const winRate = wins / starts;
+      const placeRate = (wins + seconds + thirds) / starts;
+      const experience = Math.min(starts / 12, 1);
+      return clamp(38 + winRate * 42 + placeRate * 24 + experience * 7, 30, 98);
+    }
+
+    function conditionScore(weightChange) {
+      const change = Math.abs(Number(weightChange));
+      if (!Number.isFinite(change)) return 65;
+      if (change <= 6) return 86;
+      if (change <= 10) return 76;
+      if (change <= 16) return 62;
+      return 46;
+    }
+
+    function findWinOdds(venue, date, raceNumber, horseNumber) {
+      const row = officialOddsRows.find(item =>
+        item[0] === venue && item[1] === date && Number(item[2]) === Number(raceNumber) &&
+        String(item[3]).includes('単勝') && Number(item[4]) === Number(horseNumber)
+      );
+      const odds = row ? Number(row[7]) : NaN;
+      return Number.isFinite(odds) && odds > 0 ? odds : 10;
+    }
+
+    function officialRowToHorse(row) {
+      return {
+        name: row[6],
+        odds: findWinOdds(row[0], row[1], row[2], row[5]),
+        recent: Math.round(recordScore(row[24])),
+        course: Math.round(recordScore(row[27])),
+        distance: Math.round(recordScore(row[28])),
+        jockey: Math.round(recordScore(row[17])),
+        condition: conditionScore(row[23])
+      };
+    }
+
+    function formatRaceLabel(key) {
+      const [venue, date, raceNumber] = key.split('|');
+      const formattedDate = `${date.slice(0, 4)}/${date.slice(4, 6)}/${date.slice(6, 8)}`;
+      return `${venue} ${formattedDate} ${Number(raceNumber)}R`;
+    }
+
+    function loadSelectedOfficialRace() {
+      const selector = document.getElementById('race-selector');
+      const selectedKey = selector.value;
+      const rows = officialHorseRows.filter(row => raceKey(row) === selectedKey);
+      const horses = rows.map(officialRowToHorse);
+      if (horses.length < 3) throw new Error('選択したレースの出走馬を3頭以上読み込めませんでした。');
+
+      document.getElementById('race-name').value = formatRaceLabel(selectedKey);
+      document.getElementById('race-data').value = [
+        '馬名,単勝オッズ,近走,コース適性,距離適性,騎手,状態',
+        ...horses.map(horse => [horse.name, horse.odds, horse.recent, horse.course, horse.distance, horse.jockey, horse.condition].join(','))
+      ].join('\n');
+
+      const status = document.getElementById('import-status');
+      const oddsNote = officialOddsRows.length ? '公式オッズも反映しました。' : 'オッズCSVがないため、オッズは10.0で仮置きしています。';
+      status.textContent = `${horses.length}頭を自動入力しました。${oddsNote}`;
+      status.classList.add('show');
+      predict();
+    }
+
+    function populateOfficialRaceSelector() {
+      const keys = [...new Set(officialHorseRows.map(raceKey))];
+      if (!keys.length) throw new Error('出馬表CSVのレース情報を読み取れませんでした。');
+
+      const selector = document.getElementById('race-selector');
+      selector.innerHTML = keys.map(key => `<option value="${escapeHtml(key)}">${escapeHtml(formatRaceLabel(key))}</option>`).join('');
+      selector.disabled = false;
+      loadSelectedOfficialRace();
+    }
+
+    function makeOfficialSampleHorse(number, name, overall, course, distance, jockey, weightChange) {
+      const row = Array(36).fill('');
+      row[0] = '大井'; row[1] = '20260703'; row[2] = '11'; row[5] = String(number); row[6] = name;
+      row[17] = jockey; row[23] = String(weightChange); row[24] = overall; row[27] = course; row[28] = distance;
+      return row;
+    }
+
+    function loadOfficialSample() {
+      officialHorseRows = [
+        makeOfficialSampleHorse(1, 'オオイグリーン', '8-5-3-14', '3-2-1-4', '4-2-1-5', '5-4-2-18', -2),
+        makeOfficialSampleHorse(2, 'ダートスター', '6-4-5-17', '4-1-2-6', '2-3-2-6', '8-5-4-21', 4),
+        makeOfficialSampleHorse(3, 'トワイライトベル', '5-7-4-19', '2-4-2-7', '3-4-1-8', '4-5-3-22', -8),
+        makeOfficialSampleHorse(4, 'ローカルヒーロー', '4-3-5-22', '3-2-3-9', '2-2-3-10', '6-3-3-25', 6)
+      ];
+      officialOddsRows = [
+        ['大井', '20260703', '11', '単勝', '1', '', '', '3.4'],
+        ['大井', '20260703', '11', '単勝', '2', '', '', '5.6'],
+        ['大井', '20260703', '11', '単勝', '3', '', '', '9.8'],
+        ['大井', '20260703', '11', '単勝', '4', '', '', '18.2']
+      ];
+      populateOfficialRaceSelector();
+    }
+
+    async function loadOfficialFiles(fileList) {
+      const files = Array.from(fileList);
+      const horseFile = files.find(file => file.name.toLowerCase().includes('horselist'));
+      const oddsFile = files.find(file => file.name.toLowerCase().includes('odds'));
+      if (!horseFile) throw new Error('horselist.csvが見つかりません。ZIPを展開してから選んでください。');
+
+      officialHorseRows = parseCSV(await decodeCSVFile(horseFile))
+        .filter(row => row.length >= 30 && /^\d{8}$/.test(row[1]) && Number.isFinite(Number(row[2])) && row[6]);
+      officialOddsRows = oddsFile
+        ? parseCSV(await decodeCSVFile(oddsFile)).filter(row => row.length >= 8 && /^\d{8}$/.test(row[1]))
+        : [];
+
+      populateOfficialRaceSelector();
+    }
 
     function parseData(text) {
       const lines = text.trim().split(/\r?\n/).filter(Boolean);
@@ -324,6 +510,36 @@
     }
 
     document.getElementById('predict-button').addEventListener('click', predict);
+    document.getElementById('official-sample-button').addEventListener('click', () => {
+      const error = document.getElementById('error');
+      error.classList.remove('show');
+      try {
+        loadOfficialSample();
+      } catch (exception) {
+        error.textContent = exception.message;
+        error.classList.add('show');
+      }
+    });
+    document.getElementById('official-files').addEventListener('change', async event => {
+      const error = document.getElementById('error');
+      error.classList.remove('show');
+      try {
+        await loadOfficialFiles(event.target.files);
+      } catch (exception) {
+        error.textContent = exception.message;
+        error.classList.add('show');
+      }
+    });
+    document.getElementById('race-selector').addEventListener('change', () => {
+      const error = document.getElementById('error');
+      error.classList.remove('show');
+      try {
+        loadSelectedOfficialRace();
+      } catch (exception) {
+        error.textContent = exception.message;
+        error.classList.add('show');
+      }
+    });
     document.getElementById('sample-button').addEventListener('click', () => {
       document.getElementById('race-name').value = '東京11R サンプル記念';
       document.getElementById('race-data').value = sampleData;
