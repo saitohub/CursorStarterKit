@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ウマヨミ｜競馬予想プロトタイプ</title>
+  <style>
+    :root {
+      --ink: #14231c;
+      --muted: #65736c;
+      --paper: #f6f3eb;
+      --card: #fffdf8;
+      --green: #0b684a;
+      --green-dark: #064633;
+      --gold: #d9a62e;
+      --gold-soft: #f5e7bd;
+      --line: #dedbd1;
+      --danger: #b33d32;
+      --shadow: 0 18px 48px rgba(20, 35, 28, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(217, 166, 46, 0.18), transparent 28rem),
+        linear-gradient(150deg, #f8f5ed 0%, #edf3ee 100%);
+      font-family: "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+    }
+
+    button, input, textarea { font: inherit; }
+
+    .hero {
+      color: white;
+      background:
+        linear-gradient(120deg, rgba(3, 42, 29, 0.96), rgba(11, 104, 74, 0.93)),
+        repeating-linear-gradient(90deg, transparent 0 54px, rgba(255,255,255,.05) 54px 56px);
+      padding: 44px 20px 78px;
+    }
+
+    .hero-inner, main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #f7d77f;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 { margin: 0; font-size: clamp(36px, 7vw, 68px); letter-spacing: -.045em; line-height: 1; }
+    .hero p:last-child { max-width: 680px; margin: 18px 0 0; color: rgba(255,255,255,.82); line-height: 1.75; }
+
+    main { margin-top: -42px; padding-bottom: 60px; }
+
+    .grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr); gap: 22px; align-items: start; }
+
+    .panel {
+      background: rgba(255, 253, 248, .96);
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-head { padding: 22px 24px 15px; border-bottom: 1px solid var(--line); }
+    .panel-head h2 { margin: 0; font-size: 20px; }
+    .panel-head p { margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .panel-body { padding: 22px 24px 24px; }
+
+    label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 800; }
+    input, textarea {
+      width: 100%;
+      border: 1px solid #cbc9c0;
+      border-radius: 12px;
+      background: white;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input { height: 46px; padding: 0 13px; }
+    textarea { min-height: 286px; padding: 13px; resize: vertical; line-height: 1.65; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+    input:focus, textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(11,104,74,.12); }
+
+    .field + .field { margin-top: 18px; }
+    .hint { margin: 7px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .actions { display: flex; gap: 10px; margin-top: 18px; }
+
+    .button {
+      min-height: 46px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 900;
+      transition: transform .15s, filter .15s;
+    }
+    .button:hover { transform: translateY(-1px); filter: brightness(1.03); }
+    .button.primary { flex: 1; color: white; background: linear-gradient(135deg, var(--green), var(--green-dark)); }
+    .button.secondary { color: var(--ink); background: #e9e7df; }
+
+    .error { display: none; margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; color: var(--danger); background: #fff0ed; font-size: 13px; line-height: 1.55; }
+    .error.show { display: block; }
+
+    .empty { padding: 56px 28px; text-align: center; color: var(--muted); }
+    .empty-icon { width: 62px; height: 62px; margin: 0 auto 17px; border-radius: 50%; display: grid; place-items: center; color: var(--green); background: #e7f0eb; font-size: 28px; }
+    .empty strong { display: block; color: var(--ink); margin-bottom: 8px; }
+
+    .result { display: none; }
+    .result.show { display: block; }
+    .result-title { padding: 18px 24px; color: white; background: var(--green-dark); }
+    .result-title small { display: block; color: #bad7cc; margin-bottom: 4px; }
+    .result-title h2 { margin: 0; font-size: 22px; }
+
+    .picks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 18px; }
+    .pick { position: relative; min-height: 144px; padding: 17px; border: 1px solid var(--line); border-radius: 16px; background: white; overflow: hidden; }
+    .pick::after { content: ""; position: absolute; width: 80px; height: 80px; right: -35px; bottom: -35px; border-radius: 50%; background: var(--gold-soft); }
+    .pick-mark { color: var(--green); font-size: 13px; font-weight: 900; }
+    .pick h3 { margin: 5px 0 8px; font-size: 20px; }
+    .pick p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .score { display: inline-flex; align-items: baseline; gap: 3px; margin-top: 10px; color: var(--green-dark); font-weight: 900; }
+    .score b { font-size: 23px; }
+
+    .ranking { padding: 0 18px 20px; }
+    .ranking h3 { margin: 4px 0 10px; font-size: 15px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 13px; }
+    table { width: 100%; border-collapse: collapse; background: white; font-size: 12px; }
+    th, td { padding: 11px 10px; border-bottom: 1px solid #ece9e0; text-align: right; white-space: nowrap; }
+    th { color: var(--muted); background: #f5f3ed; font-size: 10px; }
+    th:nth-child(2), td:nth-child(2) { text-align: left; }
+    tbody tr:last-child td { border-bottom: 0; }
+    .rank { width: 28px; height: 28px; display: inline-grid; place-items: center; border-radius: 50%; color: white; background: var(--green); font-weight: 900; }
+
+    .disclaimer { margin: 18px 0 0; color: var(--muted); font-size: 11px; line-height: 1.65; text-align: center; }
+
+    @media (max-width: 820px) {
+      .hero { padding-top: 34px; }
+      .grid { grid-template-columns: 1fr; }
+      .result-panel { order: -1; }
+    }
+
+    @media (max-width: 520px) {
+      main, .hero-inner { width: min(100% - 20px, 1120px); }
+      .panel-head, .panel-body { padding-left: 17px; padding-right: 17px; }
+      .picks { grid-template-columns: 1fr; }
+      .actions { flex-direction: column; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Horse race prediction prototype</p>
+      <h1>ウマヨミ</h1>
+      <p>数字を入れると、◎本命・○対抗・▲単穴・☆穴馬を理由つきで提案。まずは1レース、自分の見立てを形にするための競馬予想プロトタイプです。</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>1. 出馬データを入力</h2>
+          <p>各評価は0〜100点。CSVの見出しはそのまま残してください。</p>
+        </div>
+        <div class="panel-body">
+          <div class="field">
+            <label for="race-name">レース名</label>
+            <input id="race-name" data-testid="race-name" value="東京11R サンプル記念" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="race-data">出馬表CSV</label>
+            <textarea id="race-data" data-testid="race-data" spellcheck="false">馬名,単勝オッズ,近走,コース適性,距離適性,騎手,状態
+グリーンアロー,3.2,88,82,91,84,86
+サンライズベル,4.8,84,90,83,78,88
+ノーブルステップ,7.1,81,76,85,89,79
+ミッドナイトラン,12.6,78,88,80,72,84
+ゴールドリーフ,18.4,75,79,77,83,82
+ブルーホライズン,6.4,80,74,82,86,76
+ライトニング,24.8,72,86,75,80,85
+キタノヴォヤージュ,36.2,69,81,73,77,80</textarea>
+            <p class="hint">列：馬名、単勝オッズ、近走、コース適性、距離適性、騎手、状態。最低3頭を入力してください。</p>
+          </div>
+          <div class="actions">
+            <button class="button secondary" id="sample-button" data-testid="sample-button" type="button">サンプルに戻す</button>
+            <button class="button primary" id="predict-button" data-testid="predict-button" type="button">予想を出す</button>
+          </div>
+          <p class="error" id="error" role="alert"></p>
+        </div>
+      </section>
+
+      <section class="panel result-panel" aria-live="polite">
+        <div class="empty" id="empty-state">
+          <div class="empty-icon">♞</div>
+          <strong>まだ予想はありません</strong>
+          左のデータを確認して「予想を出す」を押してください。
+        </div>
+        <div class="result" id="result" data-testid="result">
+          <div class="result-title">
+            <small>AIではなく、設定済みスコアによる試作予想</small>
+            <h2 id="result-race-name">予想結果</h2>
+          </div>
+          <div class="picks" id="picks"></div>
+          <div class="ranking">
+            <h3>総合ランキング</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>順位</th><th>馬名</th><th>予想点</th><th>オッズ</th><th>近走</th><th>適性</th></tr>
+                </thead>
+                <tbody id="ranking-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <p class="disclaimer">このアプリは娯楽用の試作です。的中や利益を保証するものではありません。購入判断はご自身の責任で行い、無理のない範囲で楽しんでください。</p>
+  </main>
+
+  <script>
+    const sampleData = document.getElementById('race-data').value;
+    const factorLabels = {
+      recent: '近走', course: 'コース適性', distance: '距離適性', jockey: '騎手', condition: '状態', market: '市場評価'
+    };
+    const weights = { recent: .26, course: .20, distance: .18, jockey: .14, condition: .12, market: .10 };
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    function parseData(text) {
+      const lines = text.trim().split(/\r?\n/).filter(Boolean);
+      if (lines.length < 4) throw new Error('見出しを含めて、最低3頭分のデータを入力してください。');
+
+      return lines.slice(1).map((line, index) => {
+        const cells = line.split(',').map(cell => cell.trim());
+        if (cells.length !== 7) throw new Error(`${index + 2}行目の列数が違います。7列あるか確認してください。`);
+        const [name, oddsText, recentText, courseText, distanceText, jockeyText, conditionText] = cells;
+        const numbers = [oddsText, recentText, courseText, distanceText, jockeyText, conditionText].map(Number);
+        if (!name || numbers.some(Number.isNaN)) throw new Error(`${index + 2}行目に、馬名または数値の入力ミスがあります。`);
+        const [odds, recent, course, distance, jockey, condition] = numbers;
+        if (odds <= 0) throw new Error(`${index + 2}行目のオッズは0より大きい数にしてください。`);
+        if ([recent, course, distance, jockey, condition].some(value => value < 0 || value > 100)) {
+          throw new Error(`${index + 2}行目の評価は0〜100点で入力してください。`);
+        }
+        return { name, odds, recent, course, distance, jockey, condition };
+      });
+    }
+
+    function calculate(horse) {
+      const market = clamp(100 / (1 + Math.log(horse.odds)), 20, 95);
+      const factors = { recent: horse.recent, course: horse.course, distance: horse.distance, jockey: horse.jockey, condition: horse.condition, market };
+      const score = Object.entries(weights).reduce((sum, [key, weight]) => sum + factors[key] * weight, 0);
+      const valueScore = score * (1 + Math.min(horse.odds, 30) / 110);
+      return { ...horse, factors, score, valueScore };
+    }
+
+    function makeReason(horse, isValue = false) {
+      const strongest = Object.entries(horse.factors)
+        .filter(([key]) => key !== 'market')
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 2)
+        .map(([key]) => factorLabels[key]);
+      if (isValue) return `${strongest.join('・')}が上位。${horse.odds.toFixed(1)}倍なら妙味あり。`;
+      return `${strongest.join('・')}が高評価。総合バランスで選出。`;
+    }
+
+    function render(horses) {
+      const sorted = horses.map(calculate).sort((a, b) => b.score - a.score);
+      const average = sorted.reduce((sum, horse) => sum + horse.score, 0) / sorted.length;
+      const valueCandidates = sorted.filter((horse, index) => index >= 2 && horse.odds >= 7 && horse.score >= average - 5);
+      const valueHorse = (valueCandidates.length ? valueCandidates : sorted.slice(2))
+        .sort((a, b) => b.valueScore - a.valueScore)[0];
+
+      const picks = [
+        { mark: '◎ 本命', horse: sorted[0], value: false },
+        { mark: '○ 対抗', horse: sorted[1], value: false },
+        { mark: '▲ 単穴', horse: sorted[2], value: false },
+        { mark: '☆ 穴馬', horse: valueHorse, value: true }
+      ];
+
+      document.getElementById('picks').innerHTML = picks.map(({ mark, horse, value }) => `
+        <article class="pick">
+          <div class="pick-mark">${mark}</div>
+          <h3>${escapeHtml(horse.name)}</h3>
+          <p>${makeReason(horse, value)}</p>
+          <span class="score"><b>${horse.score.toFixed(1)}</b>点</span>
+        </article>
+      `).join('');
+
+      document.getElementById('ranking-body').innerHTML = sorted.map((horse, index) => `
+        <tr>
+          <td><span class="rank">${index + 1}</span></td>
+          <td><strong>${escapeHtml(horse.name)}</strong></td>
+          <td>${horse.score.toFixed(1)}</td>
+          <td>${horse.odds.toFixed(1)}</td>
+          <td>${horse.recent}</td>
+          <td>${Math.round((horse.course + horse.distance) / 2)}</td>
+        </tr>
+      `).join('');
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
+    }
+
+    function predict() {
+      const error = document.getElementById('error');
+      error.classList.remove('show');
+      try {
+        const horses = parseData(document.getElementById('race-data').value);
+        render(horses);
+        document.getElementById('result-race-name').textContent = document.getElementById('race-name').value.trim() || '予想結果';
+        document.getElementById('empty-state').style.display = 'none';
+        document.getElementById('result').classList.add('show');
+      } catch (exception) {
+        error.textContent = exception.message;
+        error.classList.add('show');
+      }
+    }
+
+    document.getElementById('predict-button').addEventListener('click', predict);
+    document.getElementById('sample-button').addEventListener('click', () => {
+      document.getElementById('race-name').value = '東京11R サンプル記念';
+      document.getElementById('race-data').value = sampleData;
+      document.getElementById('error').classList.remove('show');
+    });
+  </script>
+</body>
+</html>
