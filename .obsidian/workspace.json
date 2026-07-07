@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メルマガ有益情報抽出（全期間・重複統合）.md",
+                "file": "01_Notes/池田貴将-メモ.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Swipe - 松尾可奈メルマガ有益情報抽出（全期間・重複統合）"
+              "title": "池田貴将-メモ"
             }
           },
           {
@@ -99,7 +99,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#😡  ",
+                "query": "当麻  ",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,7 +120,8 @@
               "title": "ブックマーク"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -202,8 +203,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a2970d06648c03c9",
+  "active": "96a176dfdf204ceb",
   "lastOpenFiles": [
+    "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メルマガ有益情報抽出（全期間・重複統合）.md",
     "05_Outputs/Products/競馬予想アプリ/index.html",
     "05_Outputs/Products/競馬予想アプリ",
     "07_Swipe/Email/相馬一進/Swipe - 相馬一進ジャーナリングのやり方（中学生向け）.md",
@@ -228,7 +230,6 @@
     "04_Journals/2026-06-30.md",
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メール全件索引（2026年）.md",
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メルマガ本文確認進捗.md",
-    "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メルマガ有益情報抽出（全期間・重複統合）.md",
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メルマガ有益情報抽出（2026年6月）.md",
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メルマガ総合索引と構造分析.md",
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メール全件索引（2020年）.md",
@@ -239,7 +240,6 @@
     "KeibaWorkspace/02_Configs/02_Configs/Templates",
     "KeibaWorkspace/02_Configs/Templates",
     "KeibaWorkspace/02_Configs/02_Configs",
-    "KeibaWorkspace/02_Configs",
     "05_Outputs/note/20260625_recording-my-voice/images/thumbnail.png",
     "05_Outputs/note/20260625_recording-my-voice/images/figure_02.png",
     "05_Outputs/note/20260625_recording-my-voice/images/figure_01.png",
