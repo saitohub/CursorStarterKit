@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Notes/池田貴将-メモ.md",
+                "file": "04_Journals/2026-07-08.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "池田貴将-メモ"
+              "title": "2026-07-08"
             }
           },
           {
@@ -99,7 +99,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "当麻  ",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,8 +120,7 @@
               "title": "ブックマーク"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -203,8 +202,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "96a176dfdf204ceb",
+  "active": "e99a6ece7571e9be",
   "lastOpenFiles": [
+    "01_Notes/池田貴将-メモ.md",
+    "04_Journals/2026-07-08.md",
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メルマガ有益情報抽出（全期間・重複統合）.md",
     "05_Outputs/Products/競馬予想アプリ/index.html",
     "05_Outputs/Products/競馬予想アプリ",
@@ -234,7 +235,6 @@
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メルマガ総合索引と構造分析.md",
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メール全件索引（2020年）.md",
     "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メール全件索引（2025年）.md",
-    "07_Swipe/Email/松尾可奈/Swipe - 松尾可奈メール全件索引（2024年）.md",
     "07_Swipe/Email/松尾可奈",
     "KeibaWorkspace/scripts",
     "KeibaWorkspace/02_Configs/02_Configs/Templates",
